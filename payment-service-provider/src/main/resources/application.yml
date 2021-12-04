@@ -1,8 +1,23 @@
 server:
-  port: 8091    #default port where the service will be started
+  port: 8091
 
-eureka:         #tells about the Eureka server details and its refresh time
+spring:
+  application:
+    name: payment-service-provider
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/psp?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+eureka:
   instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.int}
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
   client:
@@ -10,9 +25,7 @@ eureka:         #tells about the Eureka server details and its refresh time
       defaultZone: http://127.0.0.1:8761/eureka/
     healthcheck:
       enabled: true
+    register-with-eureka: true
+    fetch-registry: true
     lease:
       duration: 5
-
-spring:
-  application:
-    name: payment-service-provider   #current service name to be used by the eureka server
