@@ -1,29 +1,56 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Login from "../views/Login";
+import store from "../store/index"
+import authRoutes from "./authRoutes";
+import loggedRoutes from "./loggedRoutes";
+import Main from "../views/About";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    {
+        path: '/',
+        component: Main,
+        children: loggedRoutes,
+        meta: {
+            requiresLogin: true,
+            guest: false
+        }
+    },
+    {
+        path: '/auth/',
+        component: Login,
+        children: authRoutes,
+        meta: {
+            requiresLogin: false,
+            guest: true
+        },
+    },
+
+];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+    mode: 'history',
+    routes
+});
+
+router.beforeEach((to, from, next) => {
+    let requiresLogin = to.matched.some((routeRecord) => routeRecord.meta.requiresLogin);
+    let onlyGuest = to.matched.some((routeRecord) => routeRecord.meta.guest);
+    let isLogged = store.state.auth.user != null;
+    if (!requiresLogin && !onlyGuest) {
+        next();
+    } else if (requiresLogin && !onlyGuest) {
+        if (isLogged) {
+            next();
+        } else next('/auth/');
+    } else if (!requiresLogin && onlyGuest) {
+        if (isLogged) next('/');
+        else next();
+    } else {
+        console.error('An error occurred during routing');
+    }
+});
 
 export default router
