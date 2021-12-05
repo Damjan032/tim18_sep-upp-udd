@@ -4,12 +4,13 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import Axios from "axios";
+import Vuex from 'vuex'
 import VueAxios from "vue-axios";
 import VueToast from "vue-toast-notification";
 import "vue-toast-notification/dist/theme-sugar.css";
 
 Vue.use(VueToast);
-Vue.use(VueAxios, Axios, VueToast);
+Vue.use(VueAxios, Axios, VueToast, Vuex);
 Vue.axios.defaults.baseURL = "http://localhost:8080";
 
 Vue.axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";

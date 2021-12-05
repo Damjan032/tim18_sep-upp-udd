@@ -38,13 +38,16 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     let requiresLogin = to.matched.some((routeRecord) => routeRecord.meta.requiresLogin);
     let onlyGuest = to.matched.some((routeRecord) => routeRecord.meta.guest);
-    let isLogged = store.state.auth.user != null;
+    let isLogged = store.state.auth.loggedIn;
+    console.log(store.state.auth)
     if (!requiresLogin && !onlyGuest) {
         next();
     } else if (requiresLogin && !onlyGuest) {
-        if (isLogged) {
+        if (isLogged)
+        {
             next();
-        } else next('/auth/');
+        }
+        else next('/auth/');
     } else if (!requiresLogin && onlyGuest) {
         if (isLogged) next('/');
         else next();

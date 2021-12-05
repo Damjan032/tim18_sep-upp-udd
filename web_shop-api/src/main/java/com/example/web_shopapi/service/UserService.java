@@ -6,6 +6,7 @@ import com.example.web_shopapi.repository.RoleRepository;
 import com.example.web_shopapi.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +15,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
 
-
 @Service
+
 public class UserService implements UserDetailsService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -71,27 +71,8 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    @Transactional(readOnly = false)
-    public User save(User user) {
-        try {
-            User response = this.userRepository.save(user);
-            logger.info("User with id {} successfully saved.", response.getId());
-            return response;
-        } catch (Exception e) {
-            logger.error("Error occurred while saving user, message: {}", e.getMessage());
-            throw e;
-        }
-    }
 
-    @Transactional(readOnly = false)
-    public void delete(long id) {
-        try {
-            this.userRepository.deleteById(id);
-            logger.info("User with id {} successfully deleted.", id);
-        } catch (Exception e) {
-            logger.error("Error occurred while deleting user with id {}, message: {}", id, e.getMessage());
-            throw e;
-        }
-    }
+
+
 
 }

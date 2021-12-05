@@ -6,21 +6,26 @@ import Vue from "vue";
 const state = {
     user: null,
     token: null,
+    loggedIn:false,
     authorities: [],
     roles: [],
 };
 
 const mutations = {
     setLoggedUser(state, response) {
-        state.user = response.user;
+        state.user = response.email;
+        state.token = response.token;
         state.authorities = response.authorities;
         state.roles = response.roles;
+        state.loggedIn= true;
     },
 
     removeLoggedUser(state) {
+        console.log("YSOSSDADADAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         state.user = null;
         state.authorities = [];
         state.roles = [];
+        state.loggedIn= false;
     },
 };
 
@@ -36,21 +41,9 @@ const actions = {
                 })
                 return;
             }
-            let auth = false
-            data.roles.forEach(role => {
-                if ((role.name === "SUPER_ADMIN")) {
-                    auth = true;
-                }
-            })
-            if (!auth) {
-                Vue.$toast.open({
-                    message: 'You are not super admin',
-                    type: 'error',
-                })
-                return;
-            }
             sessionStorage.setItem("token", JSON.stringify(data.token));
             commit("setLoggedUser", data);
+            console.log(data)
 
 
             router.push("/");
