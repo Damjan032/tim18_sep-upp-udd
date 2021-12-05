@@ -23,7 +23,7 @@
                 <v-list-item>
                     <v-list-item-content>
                         <v-list-item-title v-if="user" class="d-flex justify-center">
-                            {{ user.name }} {{ user.surname }}
+                            {{ user.firstName }} {{ user.lastName }}
                         </v-list-item-title>
                         <v-list-item-subtitle v-if="user" class="d-flex justify-center">
                             {{ user.email }}
@@ -43,7 +43,7 @@
             <v-card-actions class="pa-0">
                 <v-container class="pa-2 justify-center text-center">
                     <v-btn text x-small>
-                        Super Admin
+                        WebShop
                     </v-btn>
                     <span> • </span>
                     <v-btn text x-small>
@@ -67,7 +67,7 @@
             ...mapState('auth', ['user']),
             avatarInitials() {
                 if (!this.user) return '';
-                let firstName = this.user.name;
+                let firstName = this.user.email;
                 let firstNameInitial = firstName ? firstName[0].toUpperCase() : 'A';
                 return `${firstNameInitial}`;
             }

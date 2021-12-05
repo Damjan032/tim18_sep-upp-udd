@@ -13,7 +13,11 @@ const state = {
 
 const mutations = {
     setLoggedUser(state, response) {
-        state.user = response.email;
+        console.log("SET USEER")
+        console.log(response)
+        state.user = {email: response.user.email,
+            firstName: response.user.firstName,
+            lastName: response.user.lastName};
         state.token = response.token;
         state.authorities = response.authorities;
         state.roles = response.roles;
@@ -21,11 +25,13 @@ const mutations = {
     },
 
     removeLoggedUser(state) {
-        console.log("YSOSSDADADAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         state.user = null;
         state.authorities = [];
         state.roles = [];
         state.loggedIn= false;
+        state.token = null;
+        state.firstName = null;
+        state.lastName = null;
     },
 };
 
@@ -57,15 +63,8 @@ const actions = {
         }
     },
     async logout({commit}) {
-        await axios.post("/auth/logout", {
-            token: sessionStorage
-                .getItem("token")
-                .substring(1, sessionStorage.getItem("token").length - 1),
-        });
         sessionStorage.removeItem("token");
         commit("removeLoggedUser");
-
-
         router.push("/auth");
     },
 };
