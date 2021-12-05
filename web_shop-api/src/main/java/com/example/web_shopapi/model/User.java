@@ -1,6 +1,7 @@
 package com.example.web_shopapi.model;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -30,12 +31,12 @@ public class User implements UserDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Long id;
-	
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
-    private Set<Authority> authorities;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "user_role",
+			joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	private Set<Role> roles = new HashSet<>();
 	
     @Email
 	@NotBlank
@@ -75,9 +76,20 @@ public class User implements UserDetails {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return this.authorities;
+	public Set<Authority> getAuthorities() {
+		Set<Authority> authorities = new HashSet<>();
+		this.roles.forEach(role -> authorities.addAll(role.getAuthorities()));
+		return authorities;
 	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Set<Role> getRoles() {
+		return this.roles;
+	}
+
 
 	@Override
 	public String getPassword() {
@@ -139,14 +151,6 @@ public class User implements UserDetails {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Authority getAuthority() {
-		return this.authorities.iterator().next();
-	}
-	
-	public void setAuthorities(Set<Authority> authorities) {
-		this.authorities = authorities;
 	}
 
 	public void setPassword(String password) {
