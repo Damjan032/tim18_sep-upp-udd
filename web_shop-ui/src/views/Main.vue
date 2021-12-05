@@ -11,6 +11,8 @@
 <script>
 import NavBar from "../components/NavBar";
 import Drawer from "../components/Drawer";
+import {mapActions} from "vuex";
+//import {SuperAdmin} from "@/utils/drawerItems";
 
 export default {
   name: "Main",
@@ -19,9 +21,13 @@ export default {
     miniDrawer: true,
   }),
   methods: {
+    ...mapActions('webShopItems', ['getWebItems']),
     isSuperAdmin : function() {
       return true
     }
+  },
+  mounted() {
+    this.getWebItems();
   }
 }
 </script>

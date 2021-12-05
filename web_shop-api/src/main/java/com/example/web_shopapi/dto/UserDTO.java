@@ -38,11 +38,15 @@ public class UserDTO {
 
     
     public UserDTO(User user) {
+        if(user==null){
+            return;
+        }
         this.id = user.getId();
         this.email = user.getEmail();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.roles = user.getRoles().stream().map(RoleDTO::new).collect(Collectors.toList());
+
     }
 
 }

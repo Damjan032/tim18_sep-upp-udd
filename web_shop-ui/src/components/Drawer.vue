@@ -49,7 +49,6 @@
 
 <script>
     import {SuperAdmin} from "@/utils/drawerItems";
-
     export default {
         name: "Drawer",
         data: () => ({
