@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/auth")
+@RequestMapping(value = "/api/payment-service-provider/auth")
 public class AuthenticationController {
 
     @Autowired

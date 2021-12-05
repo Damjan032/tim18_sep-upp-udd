@@ -1,8 +1,13 @@
 server:
-  port: 8092    #default port where the service will be started
+  port: 8092
 
-eureka:         #tells about the Eureka server details and its refresh time
+spring:
+  application:
+    name: bank-payment-service
+
+eureka:
   instance:
+    instance-id: ${spring.application.name}:${random.int}
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 2
   client:
@@ -10,10 +15,9 @@ eureka:         #tells about the Eureka server details and its refresh time
       defaultZone: http://127.0.0.1:8761/eureka/
     healthcheck:
       enabled: true
+    register-with-eureka: true
+    fetch-registry: true
     lease:
       duration: 5
 
-spring:
-  application:
-    name: bank-payment-service   #current service name to be used by the eureka server
 
