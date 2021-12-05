@@ -4,7 +4,7 @@ import Login from "../views/Login";
 import store from "../store/index"
 import authRoutes from "./authRoutes";
 import loggedRoutes from "./loggedRoutes";
-import Main from "../views/About";
+import Main from "../views/Main";
 
 Vue.use(VueRouter);
 
