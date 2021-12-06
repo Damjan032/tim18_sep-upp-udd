@@ -1,6 +1,7 @@
 package itcompany.ftn.paymentserviceprovider.service;
 
 import itcompany.ftn.paymentserviceprovider.model.WebShop;
+import itcompany.ftn.paymentserviceprovider.model.enums.PaymentType;
 
 public interface WebShopService {
 
@@ -10,4 +11,7 @@ public interface WebShopService {
 
     WebShop save(WebShop store);
 
+    void removePaymentType(String id, PaymentType card);
+
+    void addPaymentType(String id, PaymentType card);
 }

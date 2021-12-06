@@ -28,3 +28,5 @@ eureka:
     fetch-registry: true
     lease:
       duration: 5
+
+gateway-service-uri: http://gateway-service
