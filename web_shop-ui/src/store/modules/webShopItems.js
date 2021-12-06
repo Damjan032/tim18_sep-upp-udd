@@ -2,14 +2,12 @@ import axios from "axios";
 import Vue from "vue";
 
 const state = {
-    courses : null,
-    products: null
+    webShopItems : null,
 };
 
 const mutations = {
     setWebItems(state, response) {
-        state.courses = response.courses;
-        state.products = response.products;
+        state.webShopItems = response;
 
     },
 }

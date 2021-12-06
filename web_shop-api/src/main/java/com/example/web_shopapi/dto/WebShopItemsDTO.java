@@ -8,6 +8,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class WebShopItemsDTO {
-    List<ProductDTO> products;
+    List<WebShopItemDTO> products;
     List<CourseDTO> courses;
 }

@@ -67,7 +67,6 @@
         },
         async mounted() {
           this.items = (new SuperAdmin()).items;
-          this.items = null;
         }
     }
 </script>

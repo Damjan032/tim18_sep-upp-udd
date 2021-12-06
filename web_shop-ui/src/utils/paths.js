@@ -1,6 +1,6 @@
 export const homePath = '/';
 
-export const requestsPath = '/requests';
+export const basketPath = '/basket';
 
 export const certificateDetails = '/addCertificate/:alias';
 
