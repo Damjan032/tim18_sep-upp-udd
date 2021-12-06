@@ -12,11 +12,11 @@ spring:
           uri: lb://payment-service-provider
           predicates:
             - Path=/api/payment-service-provider/**
-        # bank-payment-service
-        - id: bank-payment-service
-          uri: lb://bank-payment-service
+        # card-payment-service
+        - id: card-payment-service
+          uri: lb://card-payment-service
           predicates:
-            - Path=/api/bank-payment-service/**
+            - Path=/api/card-payment-service/**
 
 eureka:
   instance:

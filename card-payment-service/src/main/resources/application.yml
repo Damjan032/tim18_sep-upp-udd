@@ -1,9 +1,17 @@
+
 server:
   port: 8092
 
 spring:
   application:
-    name: bank-payment-service
+    name: card-payment-service
+    datasource:
+      url: jdbc:mysql://localhost:3306/card-payment-service?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: admin
+    jpa:
+      hibernate:
+        ddl-auto: update
 
 eureka:
   instance:
@@ -20,4 +28,6 @@ eureka:
     lease:
       duration: 5
 
-
+bank-uris:
+  bank1: http://localhost:8001/api
+  bank2: http://localhost:8002/api

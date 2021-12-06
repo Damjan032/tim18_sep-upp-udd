@@ -2,6 +2,7 @@ package itcompany.ftn.paymentserviceprovider.service.implementation;
 
 import itcompany.ftn.paymentserviceprovider.model.User;
 import itcompany.ftn.paymentserviceprovider.model.WebShop;
+import itcompany.ftn.paymentserviceprovider.model.enums.PaymentType;
 import itcompany.ftn.paymentserviceprovider.repository.WebShopRepository;
 import itcompany.ftn.paymentserviceprovider.service.UserService;
 import itcompany.ftn.paymentserviceprovider.service.WebShopService;
@@ -58,5 +59,25 @@ public class WebShopServiceImpl implements WebShopService {
     @Override
     public WebShop save(WebShop store) {
         return webShopRepository.save(store);
+    }
+
+    @Override
+    public void removePaymentType(String id, PaymentType paymentType) {
+        WebShop webShop = getById(id);
+
+        if (webShop != null) {
+            webShop.getChosenPaymentTypes().remove(paymentType);
+            save(webShop);
+        }
+    }
+
+    @Override
+    public void addPaymentType(String id, PaymentType paymentType) {
+        WebShop webShop = getById(id);
+
+        if (webShop != null) {
+            webShop.getChosenPaymentTypes().add(paymentType);
+            save(webShop);
+        }
     }
 }
