@@ -74,7 +74,9 @@
         },
         methods: {
             ...mapActions('auth', ['logout']),
+            ...mapActions('basket', ['deleteBasketAllApi']),
             btLogout() {
+                this.deleteBasketAllApi();
                 this.logout();
             },
             toProfile() {

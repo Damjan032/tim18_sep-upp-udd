@@ -54,7 +54,6 @@ const actions = {
 
             router.push("/");
         } catch (e) {
-            console.log("USAO OCDE")
             Vue.$toast.open({
                 message: 'Incorrect username or password',
                 type: 'error',

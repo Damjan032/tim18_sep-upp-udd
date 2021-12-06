@@ -1,37 +1,20 @@
-import {configPath, requestsPath, usersPath, createCertificate} from "./paths";
+import {homePath, basketPath} from "./paths";
 
-const {homePath} = require("./paths");
-
-
-const patientsItem = {
-    icon: 'mdi-file-document-edit-outline',
-    label: 'Certificates Requests',
-    path: requestsPath,
+const basketItem = {
+    icon: 'mdi-basket',
+    label: 'Basket',
+    path: basketPath,
 };
 
-const createCert = {
-    icon: 'mdi-file-document-edit-outline',
-    label: 'Add certificate',
-    path: createCertificate,
-};
 
 
 const homeItem = {
-    icon: 'mdi-file-document-outline',
-    label: 'Certificates',
+    icon: 'mdi-home',
+    label: 'Shop',
     path: homePath,
 };
 
-const userItem = {
-    icon: 'mdi-account-multiple',
-    label: 'Users',
-    path: usersPath
-};
-const configItem = {
-    icon: 'mdi-cogs',
-    label: 'Configuration',
-    path: configPath
-}
+
 
 class SuperAdmin {
     static name = 'SuperAdmin';
@@ -39,10 +22,7 @@ class SuperAdmin {
     constructor() {
         this.items = [
             homeItem,
-            patientsItem,
-            userItem,
-            configItem,
-            createCert
+            basketItem,
         ]
     }
 }

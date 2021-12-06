@@ -49,7 +49,6 @@
 
 <script>
     import {SuperAdmin} from "@/utils/drawerItems";
-
     export default {
         name: "Drawer",
         data: () => ({
@@ -68,7 +67,6 @@
         },
         async mounted() {
           this.items = (new SuperAdmin()).items;
-          this.items = null;
         }
     }
 </script>
