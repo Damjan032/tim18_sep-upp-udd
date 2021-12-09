@@ -53,4 +53,12 @@ public class UserServiceImpl implements UserService {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+
+    @Override
+    public boolean isUserManagingWebShop(String id) {
+        User user = getUserById(id);
+        if (user == null)
+            return false;
+        return user.getManagedWebShop() != null;
+    }
 }

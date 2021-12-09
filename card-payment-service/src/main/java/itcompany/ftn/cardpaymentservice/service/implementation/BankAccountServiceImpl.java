@@ -13,23 +13,25 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Autowired
     BankAccountRepository bankAccountRepository;
 
-    @Value("${api.bank1}")
+    @Value("${bank-uris.bank1}")
     private String bank1Api;
 
-    @Value("${api.bank2}")
+    @Value("${bank-uris.bank2}")
     private String bank2Api;
 
     @Override
     public void delete(String webShopId) {
-        bankAccountRepository.deleteById(webShopId);
+        BankAccount bankAccount = bankAccountRepository.findByWebShopId(webShopId);
+        if (bankAccount != null)
+            bankAccountRepository.deleteById(webShopId);
     }
 
     @Override
     public boolean save(String webShopId, String merchantId, String merchantPassword, String bankName) {
         String bankUri;
-        if (bankName == "bank1")
+        if (bankName.equalsIgnoreCase("bank1"))
             bankUri = String.format("%s/invoice", bank1Api);
-        else if (bankName == "bank2")
+        else if (bankName.equalsIgnoreCase("bank2"))
             bankUri = String.format("%s/invoice", bank2Api);
         else
             return false;

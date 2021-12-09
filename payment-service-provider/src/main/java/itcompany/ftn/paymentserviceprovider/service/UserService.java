@@ -15,4 +15,6 @@ public interface UserService {
     User getUserById(String id);
 
     User getUserByEmail(String email);
+
+    boolean isUserManagingWebShop(String id);
 }

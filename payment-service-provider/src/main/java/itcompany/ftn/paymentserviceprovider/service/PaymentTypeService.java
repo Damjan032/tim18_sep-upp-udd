@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 
 public interface PaymentTypeService {
 
-    HttpStatus addPaymentTypeViaCard(String userId, String bankName, String merchantId, String merchantPassword);
+    boolean addPaymentTypeViaCard(String userId, String bankName, String merchantId, String merchantPassword);
 
     boolean removePaymentType(String userId, PaymentType paymentType);
 }

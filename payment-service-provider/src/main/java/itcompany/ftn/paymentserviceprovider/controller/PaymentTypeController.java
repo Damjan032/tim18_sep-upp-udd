@@ -23,12 +23,20 @@ public class PaymentTypeController {
     @PostMapping(path="card")
     @PreAuthorize("hasAnyRole('ROLE_WEB_SHOP_ADMIN', 'ROLE_WEB_SHOP_MERCHANT')")
     public ResponseEntity addCardPaymentType(@Valid @RequestBody CardPaymentTypeDTO dto) {
-        HttpStatus httpStatus = paymentTypeService.addPaymentTypeViaCard(getCurrentUserId(), dto.getBankName(), dto.getMerchantId(), dto.getMerchantPassword());
-        return new ResponseEntity<>(httpStatus);
+        try {
+            boolean success = paymentTypeService.addPaymentTypeViaCard(getCurrentUserId(), dto.getBankName(), dto.getMerchantId(), dto.getMerchantPassword());
+            if (!success)
+                return new ResponseEntity(HttpStatus.BAD_REQUEST);
+
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @DeleteMapping
-    @PreAuthorize("hasAnyRole('ROLE_STORE_ADMIN', 'ROLE_STORE_MERCHANT')")
+    @PreAuthorize("hasAnyRole('ROLE_WEB_SHOP_ADMIN', 'ROLE_WEB_SHOP_MERCHANT')")
     public ResponseEntity deleteCardPaymentOption(@RequestParam("paymentType") PaymentType paymentType) {
         paymentTypeService.removePaymentType(getCurrentUserId(), paymentType);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
