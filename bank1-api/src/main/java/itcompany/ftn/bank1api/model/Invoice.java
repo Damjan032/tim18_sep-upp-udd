@@ -56,6 +56,18 @@ public class Invoice {
         this.transaction = transaction;
     }
 
+    public Invoice(BankAccount merchantBankAccount, BigDecimal amount, String currency, String merchantOrderId, LocalDateTime merchantTimestamp, String successRedirectUrl, String failureRedirectUrl, String errorRedirectUrl) {
+        this.id = id;
+        this.merchantBankAccount = merchantBankAccount;
+        this.amount = amount;
+        this.currency = currency;
+        this.merchantOrderId = merchantOrderId;
+        this.merchantTimestamp = merchantTimestamp;
+        this.successRedirectUrl = successRedirectUrl;
+        this.failureRedirectUrl = failureRedirectUrl;
+        this.errorRedirectUrl = errorRedirectUrl;
+    }
+
     public String getId() {
         return id;
     }

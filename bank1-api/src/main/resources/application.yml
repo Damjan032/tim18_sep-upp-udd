@@ -12,3 +12,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+uri:
+  frontend: http://localhost:4201
