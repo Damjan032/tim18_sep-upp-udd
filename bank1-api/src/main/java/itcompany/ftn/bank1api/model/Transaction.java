@@ -42,6 +42,13 @@ public class Transaction {
         this.timestamp = timestamp;
     }
 
+    public Transaction(String fromAddress, String toAddress, BigDecimal amount, String currency) {
+        this.fromAddress = fromAddress;
+        this.toAddress = toAddress;
+        this.amount = amount;
+        this.currency = currency;
+    }
+
     public String getId() {
         return id;
     }
