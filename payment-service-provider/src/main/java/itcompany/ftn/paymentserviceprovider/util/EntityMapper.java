@@ -1,8 +1,15 @@
 package itcompany.ftn.paymentserviceprovider.util;
 
+import itcompany.ftn.paymentserviceprovider.dto.InvoiceDTO;
+import itcompany.ftn.paymentserviceprovider.dto.InvoiceItemDTO;
 import itcompany.ftn.paymentserviceprovider.dto.UserRegistrationDTO;
+import itcompany.ftn.paymentserviceprovider.model.Invoice;
+import itcompany.ftn.paymentserviceprovider.model.InvoiceItem;
 import itcompany.ftn.paymentserviceprovider.model.User;
 import itcompany.ftn.paymentserviceprovider.model.enums.Role;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EntityMapper {
 
@@ -15,5 +22,21 @@ public class EntityMapper {
         user.setRequiresPasswordChange(false);
         user.setRole(Role.ROLE_WEB_SHOP_ADMIN);
         return user;
+    }
+
+    public static InvoiceDTO invoiceToInvoiceDTO(Invoice invoice) {
+        List<InvoiceItemDTO> items = new ArrayList<>();
+        for (InvoiceItem item : invoice.getInvoiceItems()) {
+            InvoiceItemDTO itemDTO = new InvoiceItemDTO();
+            itemDTO.setId(item.getId());
+            itemDTO.setName(item.getName());
+            itemDTO.setAmount(item.getAmount());
+            itemDTO.setDescription(item.getDescription());
+            itemDTO.setCurrency(item.getCurrency());
+            items.add(itemDTO);
+        }
+
+        InvoiceDTO dto = new InvoiceDTO(invoice.getId(), invoice.getWebShop().getId(), invoice.getAmount(), invoice.getCurrency(),  items);
+        return dto;
     }
 }
