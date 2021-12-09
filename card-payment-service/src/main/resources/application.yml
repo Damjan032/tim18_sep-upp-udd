@@ -5,13 +5,15 @@ server:
 spring:
   application:
     name: card-payment-service
-    datasource:
-      url: jdbc:mysql://localhost:3306/card-payment-service?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
-      username: root
-      password: admin
-    jpa:
-      hibernate:
-        ddl-auto: update
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/card-payment-service?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 eureka:
   instance:

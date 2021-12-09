@@ -29,6 +29,7 @@ public class WebShopServiceImpl implements WebShopService {
     public WebShop register(String name, String userId, String parentWebShopId, String successWebhook, String failureWebhook, String errorWebhook) {
         WebShop webShop = new WebShop();
         webShop.setName(name);
+        webShop.setTransactionSuccessWebhook(successWebhook);
         webShop.setTransactionFailureWebhook(failureWebhook);
         webShop.setTransactionErrorWebhook(errorWebhook);
 

@@ -1,0 +1,19 @@
+
+server:
+  port: 8001
+
+spring:
+  application:
+    name: bank1-api
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/bank1?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+uri:
+  frontend: http://localhost:4201

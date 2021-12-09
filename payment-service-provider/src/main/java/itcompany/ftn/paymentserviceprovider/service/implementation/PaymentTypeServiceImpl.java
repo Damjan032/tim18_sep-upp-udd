@@ -44,22 +44,29 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
     private RestTemplate paymentRestTemplate;
 
     @Override
-    public HttpStatus addPaymentTypeViaCard(String userId, String bankName, String merchantId, String merchantPassword) {
+    public boolean addPaymentTypeViaCard(String userId, String bankName, String merchantId, String merchantPassword) {
         User user = userService.getUserById(userId);
         if (user == null)
-            return null;
+            return false;
 
         WebShop webShop = user.getManagedWebShop();
         if (webShop == null)
-            return null;
+            return false;
 
-        webShopService.addPaymentType(webShop.getId(), PaymentType.CARD);
+        if (webShop.getChosenPaymentTypes().contains(PaymentType.CARD))
+            return false;
 
         CardPaymentTypeDTO cardPaymentTypeDTO = new CardPaymentTypeDTO(webShop.getId(), bankName, merchantId, merchantPassword);
         ResponseEntity responseEntity = paymentRestTemplate.exchange(
-                String.format("%s/card-payment-service/api/card-payment-service/account", gatewayServiceUri),
+                String.format("%s/api/card-payment-service/account", gatewayServiceUri),
                 HttpMethod.POST, new HttpEntity<>(cardPaymentTypeDTO), ResponseEntity.class);
-        return responseEntity.getStatusCode();
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            webShopService.addPaymentType(webShop.getId(), PaymentType.CARD);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -72,8 +79,16 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
         if (webShop == null)
             return false;
 
-        webShopService.removePaymentType(webShop.getId(), paymentType);
-        paymentRestTemplate.delete(String.format("%s/%s-payment-service/api/%s-payment-service/account/%s", gatewayServiceUri, paymentType.toString().toLowerCase(), paymentType.toString().toLowerCase(), webShop.getId()));
-        return true;
+        ResponseEntity responseEntity =  paymentRestTemplate.exchange(
+                String.format("%s/api/%s-payment-service/account/%s", gatewayServiceUri, paymentType.toString().toLowerCase(), webShop.getId()),
+                HttpMethod.DELETE, null, ResponseEntity.class);
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            webShopService.removePaymentType(webShop.getId(), paymentType);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
