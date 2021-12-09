@@ -40,12 +40,10 @@ public class Transaction {
     @JoinColumn(name = "web_shop_id")
     private WebShop webShop;
 
-    private boolean settled = false;
-
     public Transaction() {
     }
 
-    public Transaction(String id, String serviceIssuedId, Invoice invoice, PaymentType type, String status, BigDecimal amount, String url, Date utcTransactionTime, WebShop webShop, boolean settled) {
+    public Transaction(String id, String serviceIssuedId, Invoice invoice, PaymentType type, String status, BigDecimal amount, String url, Date utcTransactionTime, WebShop webShop) {
         this.id = id;
         this.serviceIssuedId = serviceIssuedId;
         this.invoice = invoice;
@@ -55,7 +53,6 @@ public class Transaction {
         this.url = url;
         this.utcTransactionTime = utcTransactionTime;
         this.webShop = webShop;
-        this.settled = settled;
     }
 
     public String getId() {
@@ -128,13 +125,5 @@ public class Transaction {
 
     public void setWebShop(WebShop webShop) {
         this.webShop = webShop;
-    }
-
-    public boolean isSettled() {
-        return settled;
-    }
-
-    public void setSettled(boolean settled) {
-        this.settled = settled;
     }
 }

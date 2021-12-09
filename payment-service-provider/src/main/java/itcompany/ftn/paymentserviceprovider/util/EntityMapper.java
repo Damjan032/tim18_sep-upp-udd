@@ -1,5 +1,6 @@
 package itcompany.ftn.paymentserviceprovider.util;
 
+import itcompany.ftn.paymentserviceprovider.dto.BankCardCreateInvoiceDTO;
 import itcompany.ftn.paymentserviceprovider.dto.InvoiceDTO;
 import itcompany.ftn.paymentserviceprovider.dto.InvoiceItemDTO;
 import itcompany.ftn.paymentserviceprovider.dto.UserRegistrationDTO;
@@ -39,4 +40,17 @@ public class EntityMapper {
         InvoiceDTO dto = new InvoiceDTO(invoice.getId(), invoice.getWebShop().getId(), invoice.getAmount(), invoice.getCurrency(),  items);
         return dto;
     }
+
+    public static BankCardCreateInvoiceDTO invoiceToBankCardInvoiceDTO(Invoice invoice, String successRedirectUrl, String failureRedirectUrl, String errorRedirectUrl) {
+        BankCardCreateInvoiceDTO dto = new BankCardCreateInvoiceDTO();
+        dto.setMerchantOrderId(invoice.getId());
+        dto.setWebShopId(invoice.getWebShop().getId());
+        dto.setAmount(invoice.getAmount());
+        dto.setCurrency(invoice.getCurrency());
+        dto.setSuccessRedirectUrl(successRedirectUrl);
+        dto.setFailureRedirectUrl(failureRedirectUrl);
+        dto.setErrorRedirectUrl(errorRedirectUrl);
+        return dto;
+    }
+
 }
