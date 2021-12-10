@@ -47,10 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/bank-account").permitAll()
-                .antMatchers(HttpMethod.PUT, "/api/payment").permitAll()
-                .antMatchers(HttpMethod.PUT, "/api/payment/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/invoice").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/payment/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/payment").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/invoice/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/invoice").permitAll()
                 .anyRequest().authenticated().and().cors().configurationSource(corsConfigurationSource());
     }
 }

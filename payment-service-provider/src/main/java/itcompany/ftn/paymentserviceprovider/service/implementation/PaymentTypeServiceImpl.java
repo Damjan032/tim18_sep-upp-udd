@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Bean;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -54,7 +53,7 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
             return false;
 
         if (webShop.getChosenPaymentTypes().contains(PaymentType.CARD))
-            return false;
+            return true;
 
         CardPaymentTypeDTO cardPaymentTypeDTO = new CardPaymentTypeDTO(webShop.getId(), bankName, merchantId, merchantPassword);
         ResponseEntity responseEntity = paymentRestTemplate.exchange(

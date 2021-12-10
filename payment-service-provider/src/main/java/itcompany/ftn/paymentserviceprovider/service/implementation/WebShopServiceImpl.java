@@ -9,6 +9,8 @@ import itcompany.ftn.paymentserviceprovider.service.WebShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class WebShopServiceImpl implements WebShopService {
 
@@ -80,5 +82,18 @@ public class WebShopServiceImpl implements WebShopService {
             webShop.getChosenPaymentTypes().add(paymentType);
             save(webShop);
         }
+    }
+
+    @Override
+    public Set<PaymentType> getSupportedPaymentTypesByUserId(String userId) {
+        User user = userService.getUserById(userId);
+        if (user == null)
+            return null;
+
+        WebShop webShop = user.getManagedWebShop();
+        if (webShop == null)
+            return null;
+
+        return webShop.getChosenPaymentTypes();
     }
 }

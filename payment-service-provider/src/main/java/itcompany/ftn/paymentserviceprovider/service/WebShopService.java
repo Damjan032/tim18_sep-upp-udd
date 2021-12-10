@@ -3,6 +3,8 @@ package itcompany.ftn.paymentserviceprovider.service;
 import itcompany.ftn.paymentserviceprovider.model.WebShop;
 import itcompany.ftn.paymentserviceprovider.model.enums.PaymentType;
 
+import java.util.Set;
+
 public interface WebShopService {
 
     WebShop getById(String id);
@@ -14,4 +16,6 @@ public interface WebShopService {
     void removePaymentType(String id, PaymentType card);
 
     void addPaymentType(String id, PaymentType card);
+
+    Set<PaymentType> getSupportedPaymentTypesByUserId(String userId);
 }

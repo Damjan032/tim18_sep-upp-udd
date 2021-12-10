@@ -90,16 +90,16 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         BankCardCreateInvoiceDTO bankCardCreateInvoiceDTO = EntityMapper.invoiceToBankCardInvoiceDTO(
                 invoice,
-                String.format("%s/payment-service-provider/card-payment/%s/success", gatewayServiceUri, invoice.getId()),
-                String.format("%s/payment-service-provider/card-payment/%s/failure", gatewayServiceUri, invoice.getId()),
-                String.format("%s/payment-service-provider/card-payment/%s/error", gatewayServiceUri, invoice.getId())
+                String.format("%s/api/payment-service-provider/card-payment/%s/success", gatewayServiceUri, invoice.getId()),
+                String.format("%s/api/payment-service-provider/card-payment/%s/failure", gatewayServiceUri, invoice.getId()),
+                String.format("%s/api/payment-service-provider/card-payment/%s/error", gatewayServiceUri, invoice.getId())
         );
 
         ResponseEntity<BankCardPaymentInfoDTO> response = cardInvoicePaymentRestTemplate.exchange(
                 String.format("%s/api/card-payment-service/payment", gatewayServiceUri),
                 HttpMethod.POST, new HttpEntity<>(bankCardCreateInvoiceDTO), BankCardPaymentInfoDTO.class);
 
-        if (response.getStatusCode().is2xxSuccessful() || response.getBody() == null)
+        if (!response.getStatusCode().is2xxSuccessful() || response.getBody() == null)
             return null;
 
         BankCardPaymentInfoDTO bankCardPaymentInfoDTO = response.getBody();

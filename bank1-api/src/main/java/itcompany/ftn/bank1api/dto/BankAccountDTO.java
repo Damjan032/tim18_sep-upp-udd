@@ -12,13 +12,16 @@ public class BankAccountDTO {
 
     private String merchantPassword;
 
+    private BankCardInfoDTO bankCardInfo;
+
     public BankAccountDTO() {}
 
-    public BankAccountDTO(BigDecimal balance, String bankAccountCurrency, String merchantId, String merchantPassword) {
+    public BankAccountDTO(BigDecimal balance, String bankAccountCurrency, String merchantId, String merchantPassword, BankCardInfoDTO bankCardInfo) {
         this.balance = balance;
         this.bankAccountCurrency = bankAccountCurrency;
         this.merchantId = merchantId;
         this.merchantPassword = merchantPassword;
+        this.bankCardInfo = bankCardInfo;
     }
 
     public BigDecimal getBalance() {
@@ -51,5 +54,13 @@ public class BankAccountDTO {
 
     public void setMerchantPassword(String merchantPassword) {
         this.merchantPassword = merchantPassword;
+    }
+
+    public BankCardInfoDTO getBankCardInfo() {
+        return bankCardInfo;
+    }
+
+    public void setBankCardInfo(BankCardInfoDTO bankCardInfo) {
+        this.bankCardInfo = bankCardInfo;
     }
 }

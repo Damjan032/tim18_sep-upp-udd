@@ -15,7 +15,7 @@ public class BankCard {
     @Column(nullable = false)
     private String cardHolderName;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String panNumber; // TODO: hide in db
 
     @Column(nullable = false)
@@ -28,6 +28,13 @@ public class BankCard {
 
     public BankCard(String id, String cardHolderName, String panNumber, String expiratoryDate, BankAccount bankAccount) {
         this.id = id;
+        this.cardHolderName = cardHolderName;
+        this.panNumber = panNumber;
+        this.expiratoryDate = expiratoryDate;
+        this.bankAccount = bankAccount;
+    }
+
+    public BankCard(String cardHolderName, String panNumber, String expiratoryDate, BankAccount bankAccount) {
         this.cardHolderName = cardHolderName;
         this.panNumber = panNumber;
         this.expiratoryDate = expiratoryDate;
