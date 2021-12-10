@@ -1,6 +1,7 @@
 package itcompany.ftn.bank1api.controller;
 
 import itcompany.ftn.bank1api.dto.BankCardInfoDTO;
+import itcompany.ftn.bank1api.model.Invoice;
 import itcompany.ftn.bank1api.service.InvoiceService;
 import itcompany.ftn.bank1api.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/payment")
+@CrossOrigin
 public class PaymentController {
 
     @Autowired
@@ -20,18 +22,25 @@ public class PaymentController {
     @Autowired
     InvoiceService invoiceService;
 
-    @PutMapping(path = "{invoiceId}")
+    @PostMapping(path = "{invoiceId}")
     public ResponseEntity payInvoice(@Valid @RequestBody BankCardInfoDTO dto, @PathVariable String invoiceId) {
-        try {
-            boolean success = paymentService.payInvoice(invoiceId, dto);
-            if (!success)
-                paymentService.notifyClientException(invoiceId);
-            else
-                paymentService.notifySuccess(invoiceId);
-        } catch (Exception e) {
-            paymentService.notifyServerException(invoiceId);
-        }
+        Invoice invoice = invoiceService.getById(invoiceId);
+        if (invoice == null)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
 
+        /*
+        try {
+            boolean success = paymentService.payInvoice(invoice, dto);
+            if (!success)
+                paymentService.notifyClientException(invoice);
+            else
+                paymentService.notifySuccess(invoice);
+        } catch (Exception e) {
+            paymentService.notifyServerException(invoice);
+        }
+        */
+        
+        boolean success = paymentService.payInvoice(invoice, dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

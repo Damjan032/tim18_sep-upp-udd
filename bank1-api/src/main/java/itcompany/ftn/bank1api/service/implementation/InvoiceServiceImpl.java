@@ -37,4 +37,9 @@ public class InvoiceServiceImpl implements InvoiceService {
 
         return bankCardPaymentInfoDTO;
     }
+
+    @Override
+    public Invoice getById(String invoiceId) {
+        return invoiceRepository.findById(invoiceId).orElse(null);
+    }
 }

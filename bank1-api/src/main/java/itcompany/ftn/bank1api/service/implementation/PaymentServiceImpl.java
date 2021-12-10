@@ -46,11 +46,7 @@ public class PaymentServiceImpl implements PaymentService {
     private RestTemplate pspRestTemplate;
 
     @Override
-    public boolean payInvoice(String invoiceId, BankCardInfoDTO bankCardInfoDTO) {
-        Invoice invoice = invoiceRepository.getById(invoiceId);
-        if (invoice == null)
-            return  false;
-
+    public boolean payInvoice(Invoice invoice, BankCardInfoDTO bankCardInfoDTO) {
         if (invoice.getTransaction() != null) // already paid
             return true;
 
@@ -99,30 +95,27 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public void notifyClientException(String invoiceId) {
-        Invoice invoice = invoiceRepository.getById(invoiceId);
+    public void notifySuccess(Invoice invoice) {
         BankCardPaymentResponseDTO responseDTO = new BankCardPaymentResponseDTO(
-                "success", invoice.getMerchantOrderId(), invoice.getId(), invoice.getTransaction().getId(), invoice.getTransaction().getTimestamp()
+                "success", invoice.getMerchantOrderId(), invoice.getId(), null, null
                 );
         pspRestTemplate.postForEntity(invoice.getSuccessRedirectUrl(), responseDTO, String.class);
     }
 
     @Override
-    public void notifySuccess(String invoiceId) {
+    public void notifyClientException(Invoice invoice) {
         // TODO: Write meaningful message
-        Invoice invoice = invoiceRepository.getById(invoiceId);
         BankCardPaymentResponseDTO responseDTO = new BankCardPaymentResponseDTO(
-                "Invalid pan or not enough funds", invoice.getMerchantOrderId(), invoice.getId(), invoice.getTransaction().getId(), invoice.getTransaction().getTimestamp()
+                "Invalid pan or not enough funds", invoice.getMerchantOrderId(), invoice.getId(), null, null
         );
         pspRestTemplate.postForEntity(invoice.getFailureRedirectUrl(), responseDTO, String.class);
     }
 
     @Override
-    public void notifyServerException(String invoiceId) {
-// TODO: Write meaningful message
-        Invoice invoice = invoiceRepository.getById(invoiceId);
+    public void notifyServerException(Invoice invoice) {
+    // TODO: Write meaningful message
         BankCardPaymentResponseDTO responseDTO = new BankCardPaymentResponseDTO(
-                "Some exception happened on server side", invoice.getMerchantOrderId(), invoice.getId(), invoice.getTransaction().getId(), invoice.getTransaction().getTimestamp()
+                "Some exception happened on server side", invoice.getMerchantOrderId(), invoice.getId(), null, null
         );
         pspRestTemplate.postForEntity(invoice.getErrorRedirectUrl(), responseDTO, String.class);
     }

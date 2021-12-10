@@ -25,7 +25,7 @@ public class BankAccount {
     @Column(unique = true)
     private String merchantId;
 
-    @Column(nullable = false)
+    @Column
     private String merchantPassword; // TODO: hide in db
 
     @OneToMany
