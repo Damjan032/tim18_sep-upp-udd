@@ -18,6 +18,8 @@
 
 <script>
 // @ is an alias to /src
+import axios from "axios";
+import {gateway, api_invoice} from "../utils/paths";
 
 export default {
   name: 'Home',
@@ -27,9 +29,25 @@ export default {
         {id: 1, src: require('../assets/card.jpg'), name: "Credit card" },
         {id: 2, src: require('../assets/qr.jpg'), name: "QR code" },
         {id: 3, src: require('../assets/paypal.jpg'), name: "PayPal" },
-        {id: 4, src: require('../assets/bitcoin.jpg'), name: "BitCoin" }]
+        {id: 4, src: require('../assets/bitcoin.jpg'), name: "BitCoin" }],
+      invoiceId: ""
     }
+  },
+  methods: {
+    payInvoice() {
+      axios
+      .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
+      .then((response) => {
+        console.log(response.data);
+      });
+    }
+  },
+  created() {
+    this.invoiceId = this.$route.params.invoice
+    console.log(this.$route.params);
+    console.log(this.$route.params.invoice);
   }
+
 }
 </script>
 
