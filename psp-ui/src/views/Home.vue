@@ -1,18 +1,73 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h2>Payment Options</h2>
+    <table>
+      <tbody>
+        <tr :key="option.id" v-for="option in paymentOptions">
+          <td>
+            <img v-bind:src="option.src">
+          </td>
+          <td class="name">
+            {{option.name}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return{
+      paymentOptions: [
+        {id: 1, src: require('../assets/card.jpg'), name: "Credit card" },
+        {id: 2, src: require('../assets/qr.jpg'), name: "QR code" },
+        {id: 3, src: require('../assets/paypal.jpg'), name: "PayPal" },
+        {id: 4, src: require('../assets/bitcoin.jpg'), name: "BitCoin" }]
+    }
   }
 }
 </script>
+
+<style>
+body {
+  font-family: "lato", sans-serif;
+}
+.home {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+table{
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 26px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+td.name{
+  text-align: center;
+  width: 100%;
+  color: honeydew;
+}
+
+tr {
+    background-color: #363636;
+}
+
+img{
+    width:100px;
+    height: auto;
+}
+</style>
