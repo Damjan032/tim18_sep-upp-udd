@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/:invoice',
+    path: '/invoice/:invoice',
     name: 'Home',
     component: Home
   },

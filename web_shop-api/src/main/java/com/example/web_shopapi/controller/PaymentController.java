@@ -36,6 +36,7 @@ public class PaymentController {
         ResponseEntity<String> response = restTemplate.exchange(
                 String.format(Constants.GATEWAY + Constants.API_INVOICE),
                 HttpMethod.POST, new HttpEntity<>(invoice), String.class);
+        System.out.println(response.getBody());
         return response;
     }
 

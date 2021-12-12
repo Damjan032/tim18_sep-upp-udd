@@ -13,7 +13,7 @@ public class WebShopItemDTO {
     private UserDTO seller;
     private WebShopItemType type;
 
-
+    
     public WebShopItemDTO(Product product){
 
         this.id = product.getId();
@@ -33,4 +33,9 @@ public class WebShopItemDTO {
         this.seller = new UserDTO(course.getSeller());
         this.type = WebShopItemType.COURSE;
     }
+
+	public WebShopItemDTO() {
+		super();
+	}
+	
 }

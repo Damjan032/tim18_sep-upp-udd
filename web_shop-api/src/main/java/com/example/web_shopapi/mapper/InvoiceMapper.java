@@ -3,7 +3,8 @@ package com.example.web_shopapi.mapper;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import org.springframework.stereotype.Component;
 
 import com.example.web_shopapi.dto.CourseDTO;
 import com.example.web_shopapi.dto.InvoiceDTO;
@@ -11,25 +12,23 @@ import com.example.web_shopapi.dto.InvoiceItemDTO;
 import com.example.web_shopapi.dto.WebShopItemDTO;
 import com.example.web_shopapi.dto.WebShopItemsDTO;
 
+@Component
 public class InvoiceMapper {
 	
 	public InvoiceDTO getInvoiceDto(WebShopItemsDTO dto){
 		InvoiceDTO invoiceDTO = new InvoiceDTO();
-	    invoiceDTO.setWebShopId(null);
-	    invoiceDTO.setCurrency(null);
+		// ovaj web shop id se dobija prilikom registracije webshopa na psp treba ga negde sacuvati
+	    invoiceDTO.setWebShopId("4028808c7dac61d3017dac9517690001");
+	    invoiceDTO.setCurrency("RSD");
 	    BigDecimal totalAmount = new BigDecimal("0.00");
 	    for(WebShopItemDTO wi: dto.getProducts()) {
-	    	totalAmount = totalAmount.add(BigDecimal.valueOf(wi.getPrice()));
-	    }
-	    for(CourseDTO wi: dto.getCourses()) {
+	    	// unutar ovoga su i kursevi malo je konfuzno
 	    	totalAmount = totalAmount.add(BigDecimal.valueOf(wi.getPrice()));
 	    }
 	    List<InvoiceItemDTO> products = dto.getProducts().stream().map(p -> getInvoiceItemDTO(p)).collect(Collectors.toList());
-	    List<InvoiceItemDTO> courses = dto.getCourses().stream().map(c -> getInvoiceItemDTO(c)).collect(Collectors.toList());
-	    List<InvoiceItemDTO> allItems = Stream.concat(products.stream(), courses.stream())
-                .collect(Collectors.toList());
+	    
 	    invoiceDTO.setAmount(totalAmount);
-	    invoiceDTO.setInvoiceItems(allItems);
+	    invoiceDTO.setInvoiceItems(products);
 	    return invoiceDTO;
     }
 	
