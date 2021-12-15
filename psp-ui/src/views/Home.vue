@@ -7,7 +7,7 @@
           <td>
             <img v-bind:src="option.src">
           </td>
-          <td class="name">
+          <td class="name" v-on:click="payInvoice()">
             {{option.name}}
           </td>
         </tr>
@@ -18,8 +18,9 @@
 
 <script>
 // @ is an alias to /src
+import Vue from "vue";
 import axios from "axios";
-import {gateway, api_invoice} from "../utils/paths";
+import {gateway, api_invoice, api_bank} from "../utils/paths";
 
 export default {
   name: 'Home',
@@ -38,7 +39,30 @@ export default {
       axios
       .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
+        Vue.$toast.open({
+          message: "Success!",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Vue.$toast.open({
+          message: "An error occured!",
+        });
+      });
+      axios
+      .post(`${gateway}/${api_bank}/${this.invoiceId}`)
+      .then((response) => {
+        console.log(response);
+        Vue.$toast.open({
+          message: "Success!",
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        Vue.$toast.open({
+          message: "An error occured!",
+        });
       });
     }
   },
