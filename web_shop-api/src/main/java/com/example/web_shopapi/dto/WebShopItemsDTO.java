@@ -10,4 +10,8 @@ import java.util.List;
 public class WebShopItemsDTO {
     List<WebShopItemDTO> products;
     List<CourseDTO> courses;
+    
+	public WebShopItemsDTO() {
+		super();
+	}
 }

@@ -10,7 +10,7 @@ const loggedRoutes = [
     {
         path: basketPath,
         component: Basket,
-    },
+    }
 ];
 
 export default loggedRoutes;

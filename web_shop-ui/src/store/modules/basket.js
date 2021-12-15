@@ -63,7 +63,7 @@ const actions = {
         } catch (err) {
             console.log(err);
         }
-    },
+    }
 }
 export default {
     namespaced: true,
