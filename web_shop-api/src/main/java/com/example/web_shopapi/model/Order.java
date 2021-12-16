@@ -1,5 +1,7 @@
 package com.example.web_shopapi.model;
 
+import com.example.web_shopapi.model.enums.OrderState;
+
 import java.util.Date;
 import java.util.List;
 
