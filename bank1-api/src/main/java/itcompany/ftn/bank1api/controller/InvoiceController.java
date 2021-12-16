@@ -2,8 +2,11 @@ package itcompany.ftn.bank1api.controller;
 
 import itcompany.ftn.bank1api.dto.BankCardInvoiceDTO;
 import itcompany.ftn.bank1api.dto.BankCardPaymentInfoDTO;
+import itcompany.ftn.bank1api.model.enums.LogMode;
+import itcompany.ftn.bank1api.model.enums.LogStatus;
 import itcompany.ftn.bank1api.service.BankAccountService;
 import itcompany.ftn.bank1api.service.InvoiceService;
+import itcompany.ftn.bank1api.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -11,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.net.InetAddress;
 
 @RestController
 @RequestMapping(value = "/api/invoice")
@@ -22,14 +26,20 @@ public class InvoiceController {
 
     @Autowired
     BankAccountService bankAccountService;
+    @Autowired
+    private Logger logger;
 
     @PostMapping
     public ResponseEntity<Object> createInvoice(@Valid @RequestBody BankCardInvoiceDTO dto) {
         boolean valid = bankAccountService.validateMerchantInformation(dto.getMerchantId(), dto.getMerchantPassword());
-        if (!valid)
+        if (!valid) {
+            this.logger.writeLogs(LogMode.REGULAR, LogStatus.ERROR, "Create Invoice ERROR", InetAddress.getLoopbackAddress().getHostAddress());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
 
         BankCardPaymentInfoDTO bankCardPaymentInfoDTO = invoiceService.getBankCardPaymentInfo(dto);
+
+        this.logger.writeLogs(LogMode.REGULAR, LogStatus.SUCCESS, "Create Invoice SUCCESS", InetAddress.getLoopbackAddress().getHostAddress());
         return new ResponseEntity<>(bankCardPaymentInfoDTO, HttpStatus.OK);
     }
 }
