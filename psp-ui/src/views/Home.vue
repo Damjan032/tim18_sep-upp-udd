@@ -7,7 +7,7 @@
           <td>
             <img v-bind:src="option.src">
           </td>
-          <td class="name" v-on:click="payInvoice()">
+          <td class="name" v-on:click="payInvoice(option.name)">
             {{option.name}}
           </td>
         </tr>
@@ -35,19 +35,36 @@ export default {
     }
   },
   methods: {
-    payInvoice() {
+    payInvoice(name) {
+      console.log(name)
+      switch (name) {
+        case "Credit card":
+          console.log("Credit card");
+          this.creditCardMethod()
+          break;
+        case "QR code":
+          console.log("QR code");
+          break;
+        case "PayPal":
+          console.log("PayPal");
+          break;
+        case "BitCoin":
+          console.log("BitCoin");
+          break;
+      }
+    },
+    creditCardMethod(){
       axios
-      .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-        Vue.$toast.open({
-          message: "An error occured!",
-        });
-      });
-      
+          .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+            Vue.$toast.open({
+              message: "An error occured!",
+            });
+          })
     }
   },
   created() {

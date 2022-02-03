@@ -66,6 +66,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/payment-service-provider/invoice").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/payment-service-provider/invoice/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/payment-service-provider/invoice/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/payment-service-provider/bitcoin-payment").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/payment-service-provider/card-payment/**").permitAll()
                 .anyRequest().authenticated()
                 .and().cors();

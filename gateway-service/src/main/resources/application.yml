@@ -17,6 +17,16 @@ spring:
           uri: lb://card-payment-service
           predicates:
             - Path=/api/card-payment-service/**
+        # bitcoin-payment-service2
+        - id: bitcoin-payment-service2
+          uri: lb://bitcoin-payment-service2
+          predicates:
+            - Path=/api/bitcoin-payment-service2/**
+        # bitcoin-payment-service
+        - id: bitcoin-payment-service
+          uri: lb://bitcoin-payment-service
+          predicates:
+            - Path=/api/bitcoin-payment-service/**
 
 eureka:
   instance:

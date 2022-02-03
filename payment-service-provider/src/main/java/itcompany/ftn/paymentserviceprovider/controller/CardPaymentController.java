@@ -21,6 +21,11 @@ public class CardPaymentController {
     @Autowired
     TransactionService transactionService;
 
+    @GetMapping()
+    public void p(){
+        System.out.println("AAAAAA");
+    }
+
     @PostMapping(path = "{invoiceId}")
     public ResponseEntity<BankCardPaymentInfoDTO> payInvoiceViaBankCard(@PathVariable String invoiceId) {
         Invoice invoice = invoiceService.getById(invoiceId);

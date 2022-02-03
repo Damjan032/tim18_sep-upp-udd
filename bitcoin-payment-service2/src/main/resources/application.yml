@@ -1,10 +1,10 @@
 
 server:
-  port: 8092
+  port: 8099
 
 spring:
   application:
-    name: card-payment-service
+    name: bitcoin-payment-service2
   main:
     allow-circular-references: true
   datasource:
@@ -33,3 +33,6 @@ eureka:
 bank-uris:
   bank1: http://localhost:8001/api
   bank2: http://localhost:8002/api
+
+CALLBACK_URL: https://localhost:9005/api/payment/callback
+SANDBOX_URL: https://api-sandbox.coingate.com/v2/orders
