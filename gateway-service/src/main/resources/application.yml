@@ -22,6 +22,11 @@ spring:
           uri: lb://bitcoin-payment-service2
           predicates:
             - Path=/api/bitcoin-payment-service2/**
+        # paypal-payment-service
+        - id: paypal-payment-service
+          uri: lb://paypal-payment-service
+          predicates:
+              - Path=/api/paypal-payment-service/**
         # bitcoin-payment-service
         - id: bitcoin-payment-service
           uri: lb://bitcoin-payment-service
