@@ -19,7 +19,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
-import {gateway, api_invoice, api_bitcoin_payment_method} from "@/utils/paths";
+import {gateway, api_invoice, api_bitcoin_payment_method, api_paypal_payment_method} from "@/utils/paths";
 
 export default {
   name: 'Home',
@@ -46,6 +46,7 @@ export default {
           break;
         case "PayPal":
           console.log("PayPal");
+          this.paypalMethod();
           break;
         case "BitCoin":
           this.bitcoinMethod();
@@ -71,6 +72,22 @@ export default {
       axios
           .post(`${gateway}/${api_bitcoin_payment_method}/${this.invoiceId}`,
             "KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs"
+          )
+          .then((response) => {
+            console.log(response.data);
+            window.location.replace(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            Vue.$toast.open({
+              message: "An error occured!",
+            });
+          })
+    },
+    paypalMethod(){
+      axios
+          .post(`${gateway}/${api_paypal_payment_method}/${this.invoiceId}`,
+              "KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs"
           )
           .then((response) => {
             console.log(response.data);

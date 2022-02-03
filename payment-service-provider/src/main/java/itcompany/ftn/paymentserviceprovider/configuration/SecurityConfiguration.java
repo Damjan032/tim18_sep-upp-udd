@@ -69,6 +69,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/payment-service-provider/bitcoin-payment").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/payment-service-provider/bitcoin-payment/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/payment-service-provider/card-payment/**").permitAll()
+                .antMatchers(HttpMethod.GET, " /api/payment-service-provider/paypal-payment").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/payment-service-provider/paypal-payment/**").permitAll()
+                .antMatchers(HttpMethod.POST, " /api/payment-service-provider/paypal-payment").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/payment-service-provider/paypal-payment/**").permitAll()
                 .anyRequest().authenticated()
                 .and().cors();
         http.addFilterBefore(jwtAuthenticationFilterBean(), UsernamePasswordAuthenticationFilter.class);
