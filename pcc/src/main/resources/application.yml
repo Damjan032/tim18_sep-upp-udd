@@ -1,0 +1,21 @@
+
+server:
+  port: 8003
+
+spring:
+  application:
+    name: pcc
+  main:
+    allow-circular-references: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/pcc?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+bank-uris:
+  bank1: http://localhost:8001/api
+  bank2: http://localhost:8002/api
