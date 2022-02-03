@@ -1,9 +1,6 @@
 package itcompany.ftn.paymentserviceprovider.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -13,10 +10,11 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder(toBuilder = true)
 public class BitcoinPaymentDTO {
 
 	@NotNull(message = "Merchant id is not provided.")
-	private Long merchantOrderId;
+	private String merchantOrderId;
 
 	@NotNull
 	private Timestamp merchantTimestamp;

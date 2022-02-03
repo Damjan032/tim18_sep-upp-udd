@@ -17,7 +17,7 @@ import java.util.List;
 public class BitcoinPaymentDTO {
 
 	@NotNull(message = "Merchant id is not provided.")
-	private Long merchantOrderId;
+	private String merchantOrderId;
 
 	@NotNull
 	private Timestamp merchantTimestamp;

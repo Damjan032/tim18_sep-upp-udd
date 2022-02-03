@@ -17,10 +17,9 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Vue from "vue";
 import axios from "axios";
-import {gateway, api_invoice} from "../utils/paths";
+import {gateway, api_invoice, api_bitcoin_payment_method} from "@/utils/paths";
 
 export default {
   name: 'Home',
@@ -49,15 +48,33 @@ export default {
           console.log("PayPal");
           break;
         case "BitCoin":
+          this.bitcoinMethod();
           console.log("BitCoin");
           break;
       }
     },
     creditCardMethod(){
+      console.log(this.invoiceId)
       axios
           .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
           .then((response) => {
             console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+            Vue.$toast.open({
+              message: "An error occured!",
+            });
+          })
+    },
+    bitcoinMethod(){
+      axios
+          .post(`${gateway}/${api_bitcoin_payment_method}/${this.invoiceId}`,
+            "KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs"
+          )
+          .then((response) => {
+            console.log(response.data);
+            window.location.replace(response.data);
           })
           .catch((error) => {
             console.log(error);
