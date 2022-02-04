@@ -39,8 +39,8 @@ public class PaypalController {
     public ResponseEntity<String> payment(@RequestBody OrderDTO order) {
         try {
             Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-                    order.getIntent(), order.getDescription(), "http://localhost:9090/" + CANCEL_URL,
-                    "http://localhost:9090/" + SUCCESS_URL);
+                    order.getIntent(), order.getDescription(), "http://localhost:4200/success?status=FAILED&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&",
+                    "http://localhost:4200/success?status=SUCCESS&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&");
             for(Links link:payment.getLinks()) {
                 if(link.getRel().equals("approval_url")) {
                     return new ResponseEntity<>(link.getHref(), HttpStatus.OK);

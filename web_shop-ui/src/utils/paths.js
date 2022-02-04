@@ -18,3 +18,5 @@ export const configPath = '/config';
 
 export const confirmation = '/confirmation/:link'
 
+export const successPath = '/success'
+
