@@ -57,16 +57,18 @@ export default {
     creditCardMethod(){
       console.log(this.invoiceId)
       axios
-          .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((error) => {
-            console.log(error);
-            Vue.$toast.open({
-              message: "An error occured!",
-            });
-          })
+      .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
+      .then((response) => {
+        console.log(response);
+        //redirektuj na front banke
+        window.location.href = 'http://localhost:4202/' + response.data.paymentId;
+      })
+      .catch((error) => {
+        console.log(error);
+        Vue.$toast.open({
+          message: "An error occured!",
+        });
+      })
     },
     bitcoinMethod(){
       axios

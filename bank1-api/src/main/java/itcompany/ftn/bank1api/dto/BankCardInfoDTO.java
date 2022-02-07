@@ -13,7 +13,6 @@ public class BankCardInfoDTO {
     @NotBlank
     @Size(min = 16, max = 16)
     @Pattern(regexp = "\\d{16}")
-    @CreditCardNumber
     private String panNumber;
 
     @NotNull

@@ -30,6 +30,8 @@ public class Transaction {
 
     @CreationTimestamp
     private LocalDateTime timestamp;
+    
+    private TransactionStatus status;
 
     public Transaction() {}
 
@@ -96,4 +98,13 @@ public class Transaction {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
+
+	public TransactionStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(TransactionStatus status) {
+		this.status = status;
+	}
+	
 }

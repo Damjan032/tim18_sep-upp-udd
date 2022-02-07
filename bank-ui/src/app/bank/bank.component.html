@@ -1,0 +1,58 @@
+
+<app-form-container>
+
+    <h2>Enter bank card information</h2>
+    <form [formGroup]="bankForm">
+        <div [class.disabled]="bankPending">
+            <mat-form-field>
+                <mat-label>Pan number</mat-label>
+                <input 
+                matInput 
+                autocomplete="off"
+                formControlName="panNumber">
+                <mat-error>
+                    Pan number not valid!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Cardholder name</mat-label>
+              <input 
+              matInput 
+              autocomplete="off"
+              formControlName="cardHolderName">
+              <mat-error>
+                  Card holder name not provided!
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Expiratory date in format mm/YY</mat-label>
+                <input 
+                matInput 
+                autocomplete="off"
+                formControlName="expiratoryDate">
+                <mat-error>
+                    Expiratory date not valid (mm/YY)!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Security code</mat-label>
+              <input 
+              matInput 
+              autocomplete="off"
+              type="password"
+              formControlName="securityCode">
+              <mat-error>
+                Security code not provided!
+              </mat-error>
+            </mat-form-field>
+        <app-center-container>
+            <button 
+            *ngIf="!bankPending"
+            mat-raised-button 
+            color="primary"
+            (click)="pay()">Pay</button>
+            <app-spinner-button *ngIf="bankPending"></app-spinner-button>
+        </app-center-container>
+    </div>
+    </form>
+</app-form-container>
