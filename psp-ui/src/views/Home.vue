@@ -40,6 +40,8 @@ export default {
       .post(`${gateway}/${api_invoice}/${this.invoiceId}`)
       .then((response) => {
         console.log(response);
+        //redirektuj na front banke
+        window.location.href = 'http://localhost:4202/' + response.data.paymentId;
       })
       .catch((error) => {
         console.log(error);

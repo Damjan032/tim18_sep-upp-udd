@@ -25,11 +25,13 @@ public class CodebookService {
 
 		if (cb == null) {
 			//logger.trace("Nonexisting codebook");
+			System.out.println("nepostoji u sifarniku banka");
 			throw new NotFoundException("Invalid card data.");
 		}
 
 		RestTemplate rs = new RestTemplate();
-		ResponseEntity<PCCResDTO> response = rs.postForEntity(cb.getUrl() + "/api/payment/pay", pccRequestDto,
+		System.out.println("slanje zahteva banki kupca");
+		ResponseEntity<PCCResDTO> response = rs.postForEntity(cb.getUrl() + "/api/payment/pcc", pccRequestDto,
 				PCCResDTO.class);
 		if (response.getStatusCode() == HttpStatus.NOT_FOUND) {
 			//logger.trace("Invalid card data");

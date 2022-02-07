@@ -1,6 +1,6 @@
-package itcompany.ftn.bank1api.repository;
+package itcompany.ftn.bank2api.repository;
 
-import itcompany.ftn.bank1api.model.BankCard;
+import itcompany.ftn.bank2api.model.BankCard;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

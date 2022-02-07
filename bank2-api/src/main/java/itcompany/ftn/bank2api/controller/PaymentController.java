@@ -1,21 +1,21 @@
-package itcompany.ftn.bank1api.controller;
+package itcompany.ftn.bank2api.controller;
 
-import itcompany.ftn.bank1api.dto.BankCardInfoDTO;
-import itcompany.ftn.bank1api.dto.PCCReqDTO;
-import itcompany.ftn.bank1api.dto.PCCResDTO;
-import itcompany.ftn.bank1api.model.BankAccount;
-import itcompany.ftn.bank1api.model.BankCard;
-import itcompany.ftn.bank1api.model.Invoice;
-import itcompany.ftn.bank1api.model.Transaction;
-import itcompany.ftn.bank1api.model.TransactionStatus;
-import itcompany.ftn.bank1api.model.enums.LogMode;
-import itcompany.ftn.bank1api.model.enums.LogStatus;
-import itcompany.ftn.bank1api.repository.BankAccountRepository;
-import itcompany.ftn.bank1api.repository.BankCardRepository;
-import itcompany.ftn.bank1api.repository.TransactionRepository;
-import itcompany.ftn.bank1api.service.InvoiceService;
-import itcompany.ftn.bank1api.service.PaymentService;
-import itcompany.ftn.bank1api.utils.Logger;
+import itcompany.ftn.bank2api.dto.BankCardInfoDTO;
+import itcompany.ftn.bank2api.dto.PCCReqDTO;
+import itcompany.ftn.bank2api.dto.PCCResDTO;
+import itcompany.ftn.bank2api.model.BankAccount;
+import itcompany.ftn.bank2api.model.BankCard;
+import itcompany.ftn.bank2api.model.Invoice;
+import itcompany.ftn.bank2api.model.Transaction;
+import itcompany.ftn.bank2api.model.TransactionStatus;
+import itcompany.ftn.bank2api.model.enums.LogMode;
+import itcompany.ftn.bank2api.model.enums.LogStatus;
+import itcompany.ftn.bank2api.repository.BankAccountRepository;
+import itcompany.ftn.bank2api.repository.BankCardRepository;
+import itcompany.ftn.bank2api.repository.TransactionRepository;
+import itcompany.ftn.bank2api.service.InvoiceService;
+import itcompany.ftn.bank2api.service.PaymentService;
+import itcompany.ftn.bank2api.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -77,6 +77,7 @@ public class PaymentController {
     
     @PostMapping(path = "/pcc")
     public ResponseEntity<PCCResDTO> checkInvoice(@Valid @RequestBody PCCReqDTO dto) {
+    	System.out.println("provera stanja kod banke kupca");
     	BankCard card = cardRepository.findByPanNumber(dto.getPAN());
     	BankAccount buyerAccount = card.getBankAccount();
     	
@@ -84,9 +85,9 @@ public class PaymentController {
     	t.setAmount(dto.getAmount());
     	t.setFromAddress(dto.getAcquirerOrderId());
     	t.setCurrency("RSD");
-
     	if (buyerAccount.getBalance().compareTo(dto.getAmount()) > 0) {
     		// ima dovoljno sredstava
+    		System.out.println("ima dovoljno sredstava");
     		t.setStatus(TransactionStatus.SUCCESS);
     		buyerAccount.setBalance(buyerAccount.getBalance().subtract(dto.getAmount())); // TODO: exchange currency
             accountRepository.save(buyerAccount);
@@ -94,6 +95,7 @@ public class PaymentController {
     	}
     	else {
     		// nema dovoljno sredstava
+    		System.out.println("nema dovoljno sredstava");
     		t.setStatus(TransactionStatus.FAILED);
     	}
     	Transaction saved = transactionRepository.save(t);

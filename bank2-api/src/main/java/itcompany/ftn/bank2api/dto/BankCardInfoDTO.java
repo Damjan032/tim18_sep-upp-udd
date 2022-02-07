@@ -1,4 +1,4 @@
-package itcompany.ftn.bank1api.dto;
+package itcompany.ftn.bank2api.dto;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 
@@ -13,6 +13,7 @@ public class BankCardInfoDTO {
     @NotBlank
     @Size(min = 16, max = 16)
     @Pattern(regexp = "\\d{16}")
+    
     private String panNumber;
 
     @NotNull

@@ -1,4 +1,4 @@
-package itcompany.ftn.bank1api.service.implementation;
+package itcompany.ftn.bank2api.service.implementation;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -14,20 +14,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import itcompany.ftn.bank1api.dto.BankCardInfoDTO;
-import itcompany.ftn.bank1api.dto.BankCardPaymentResponseDTO;
-import itcompany.ftn.bank1api.dto.PCCReqDTO;
-import itcompany.ftn.bank1api.dto.PCCResDTO;
-import itcompany.ftn.bank1api.model.BankAccount;
-import itcompany.ftn.bank1api.model.BankCard;
-import itcompany.ftn.bank1api.model.Invoice;
-import itcompany.ftn.bank1api.model.Transaction;
-import itcompany.ftn.bank1api.model.TransactionStatus;
-import itcompany.ftn.bank1api.repository.BankAccountRepository;
-import itcompany.ftn.bank1api.repository.BankCardRepository;
-import itcompany.ftn.bank1api.repository.InvoiceRepository;
-import itcompany.ftn.bank1api.repository.TransactionRepository;
-import itcompany.ftn.bank1api.service.PaymentService;
+import itcompany.ftn.bank2api.dto.BankCardInfoDTO;
+import itcompany.ftn.bank2api.dto.BankCardPaymentResponseDTO;
+import itcompany.ftn.bank2api.dto.PCCReqDTO;
+import itcompany.ftn.bank2api.dto.PCCResDTO;
+import itcompany.ftn.bank2api.model.BankAccount;
+import itcompany.ftn.bank2api.model.BankCard;
+import itcompany.ftn.bank2api.model.Invoice;
+import itcompany.ftn.bank2api.model.Transaction;
+import itcompany.ftn.bank2api.model.TransactionStatus;
+import itcompany.ftn.bank2api.repository.BankAccountRepository;
+import itcompany.ftn.bank2api.repository.BankCardRepository;
+import itcompany.ftn.bank2api.repository.InvoiceRepository;
+import itcompany.ftn.bank2api.repository.TransactionRepository;
+import itcompany.ftn.bank2api.service.PaymentService;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -70,20 +70,19 @@ public class PaymentServiceImpl implements PaymentService {
             }
         }
 
-        if (buyerBankCard != null) { // same bank
-            System.out.println("banke prodavca i kupca su iste ");
+        if (buyerBankCard != null) // same bank
             return payFromSameBank(invoice, buyerBankCard);
-        }
         // TODO: else - different banks
-        System.out.println("banke prodavca i kupca su razlicite ");
+        
         return payFromDifferentBank(invoice,bankCardInfoDTO);
+        //return false;
     }
 
     private boolean payFromDifferentBank(Invoice invoice, BankCardInfoDTO bankCardInfoDTO) {
         Transaction transaction = new Transaction(bankCardInfoDTO.getCardHolderName() , invoice.getMerchantBankAccount().getMerchantId(), invoice.getAmount(), invoice.getCurrency());
 		
         transactionRepository.save(transaction);
-        System.out.println("transakcija sacuvana");
+
 		Date d = new Date(System.currentTimeMillis());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String dateStr = sdf.format(d);
@@ -93,7 +92,6 @@ public class PaymentServiceImpl implements PaymentService {
 				bankCardInfoDTO.getSecurityCode());
 
 		RestTemplate rs = new RestTemplate();
-		System.out.println("salje se zahtev pccu");
 		ResponseEntity<PCCResDTO> response = rs.postForEntity("http://localhost:8003/api/payment/pay",
 				pccRequestDto, PCCResDTO.class);
 		if (response.getStatusCode() == HttpStatus.NOT_FOUND) {

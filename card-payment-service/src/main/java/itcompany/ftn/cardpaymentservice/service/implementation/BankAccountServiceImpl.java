@@ -14,10 +14,10 @@ public class BankAccountServiceImpl implements BankAccountService {
     BankAccountRepository bankAccountRepository;
 
     @Value("${bank-uris.bank1}")
-    private String bank1Api;
+    private String bank1api;
 
     @Value("${bank-uris.bank2}")
-    private String bank2Api;
+    private String bank2api;
 
     @Override
     public void delete(String webShopId) {
@@ -30,9 +30,9 @@ public class BankAccountServiceImpl implements BankAccountService {
     public boolean save(String webShopId, String merchantId, String merchantPassword, String bankName) {
         String bankUri;
         if (bankName.equalsIgnoreCase("bank1"))
-            bankUri = String.format("%s/invoice", bank1Api);
+            bankUri = String.format("%s/invoice", bank1api);
         else if (bankName.equalsIgnoreCase("bank2"))
-            bankUri = String.format("%s/invoice", bank2Api);
+            bankUri = String.format("%s/invoice", bank1api);
         else
             return false;
 

@@ -1,4 +1,4 @@
-package itcompany.ftn.bank1api.model;
+package itcompany.ftn.bank2api.model;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
