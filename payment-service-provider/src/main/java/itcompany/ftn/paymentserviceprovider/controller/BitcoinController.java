@@ -59,9 +59,9 @@ public class BitcoinController {
 
         BitcoinPaymentDTO bitcoinPaymentDTO = BitcoinPaymentDTO.builder().amount(invoice.getAmount().doubleValue())
                 .merchantOrderId(invoiceId)
-                .errorURL("http://localhost:4201/error")
-                .successURL("http://localhost:4201/success")
-                .failedURL("http://localhost:4201/faild")
+                .errorURL("http://localhost:4200/error?status=ERROR")
+                .successURL("http://localhost:4200/success?status=SUCCESS")
+                .failedURL("http://localhost:4200/fail?status=FAIL")
                 .merchantTimestamp(new Timestamp(System.currentTimeMillis()))
                 .amount(invoice.getAmount().doubleValue())
                 .token(token)

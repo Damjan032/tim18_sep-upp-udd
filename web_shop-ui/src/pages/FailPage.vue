@@ -8,8 +8,8 @@
         </div>
         <v-card-title primary-title class="justify-center">
           <div>
-            <h3 class="headline green--text text--accent-2">SUCCESS</h3>
-            <div>Success {{ this.$route.query.type}} payment transaction</div>
+            <h3 class="headline red--text text--accent-2">FAIL</h3>
+            <div>Fail {{ this.$route.query.type}} payment transaction</div>
           </div>
         </v-card-title>
       </v-card>
@@ -21,7 +21,7 @@ import axios from "axios";
 import {api_invoice, web_api} from "@/utils/paths";
 
 export default {
-  name: "SuccessPage",
+  name: "FailPage",
   methods:{
     getUnits: function() {
       console.log(this.$route.query.status)

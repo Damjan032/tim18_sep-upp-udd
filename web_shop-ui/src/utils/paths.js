@@ -20,3 +20,5 @@ export const confirmation = '/confirmation/:link'
 
 export const successPath = '/success'
 
+export const failPath = '/fail'
+

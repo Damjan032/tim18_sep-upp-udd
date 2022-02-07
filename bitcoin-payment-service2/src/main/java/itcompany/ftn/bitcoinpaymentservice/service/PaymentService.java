@@ -33,8 +33,8 @@ public class PaymentService {
 		BitcoinOrderRequestDTO bitcoinOrder = BitcoinOrderRequestDTO.builder()
 				.order_id(pd.getMerchantOrderId().toString()).price_amount(pd.getAmount()).price_currency("USD")
 				.receive_currency("BTC").title("").description("").callback_url(callback)
-				.cancel_url(pd.getFailedURL())
-				.success_url(pd.getSuccessURL()).token(token).purchaser_email("mitarMiric123@mail.com")
+				.cancel_url(pd.getFailedURL()+ "&invoceId=" + pd.getMerchantOrderId() + "&type=BITCOIN&")
+				.success_url(pd.getSuccessURL()+ "&invoceId=" + pd.getMerchantOrderId() + "&type=BITCOIN&").token(token).purchaser_email("")
 				.build();
 
 		String clientSecret = "Bearer " + token;

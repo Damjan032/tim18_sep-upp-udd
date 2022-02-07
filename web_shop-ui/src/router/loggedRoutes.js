@@ -1,7 +1,8 @@
 import Home from "@/pages/Home";
-import {basketPath, homePath, successPath} from "@/utils/paths";
+import {basketPath, homePath, successPath, failPath} from "@/utils/paths";
 import Basket from "@/pages/Basket";
 import SuccessPage from "@/pages/SuccessPage";
+import FailPage from "@/pages/FailPage";
 
 const loggedRoutes = [
     {
@@ -15,6 +16,10 @@ const loggedRoutes = [
     {
         path: successPath,
         component: SuccessPage
+    },
+    {
+        path: failPath,
+        component: FailPage
     }
 ];
 

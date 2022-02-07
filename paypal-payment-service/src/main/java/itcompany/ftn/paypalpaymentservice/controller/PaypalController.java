@@ -39,7 +39,7 @@ public class PaypalController {
     public ResponseEntity<String> payment(@RequestBody OrderDTO order) {
         try {
             Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
-                    order.getIntent(), order.getDescription(), "http://localhost:4200/success?status=FAILED&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&",
+                    order.getIntent(), order.getDescription(), "http://localhost:4200/fail?status=FAILED&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&",
                     "http://localhost:4200/success?status=SUCCESS&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&");
             for(Links link:payment.getLinks()) {
                 if(link.getRel().equals("approval_url")) {
@@ -57,7 +57,7 @@ public class PaypalController {
 
     @GetMapping(value = CANCEL_URL)
     public String cancelPay() {
-        return "cancel";
+        return "http://localhost:4200/fail";
     }
 
     @GetMapping(value = SUCCESS_URL)
