@@ -2,16 +2,11 @@ package com.example.web_shopapi.controller;
 
 import javax.validation.Valid;
 
+import com.example.web_shopapi.dto.PaypalBtcTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.HttpEntity;
 
 
 import com.example.web_shopapi.dto.InvoiceDTO;
@@ -26,6 +21,7 @@ public class PaymentController {
 	
 	@Autowired
 	private InvoiceMapper invoiceMapper;
+
 	
 	
 	@PostMapping
@@ -38,6 +34,16 @@ public class PaymentController {
                 HttpMethod.POST, new HttpEntity<>(invoice), String.class);
         System.out.println(response.getBody());
         return response;
+    }
+
+    @PostMapping("/pp-btc-transaction")
+    public ResponseEntity<String> saveTransaction(@RequestBody PaypalBtcTransactionDTO paypalBtcTransactionDTO){
+        //InvoiceDTO invoice = invoiceMapper.getInvoiceDto(paypalBtcTransactionDTO);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.exchange(
+                String.format(Constants.GATEWAY + Constants.API_INVOICE + "/pp-btc-transaction"),
+                HttpMethod.POST, new HttpEntity<>(paypalBtcTransactionDTO), String.class);
+        return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
     }
 
 }

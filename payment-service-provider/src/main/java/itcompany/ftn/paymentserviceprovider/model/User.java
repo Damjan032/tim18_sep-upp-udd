@@ -20,6 +20,9 @@ public class User {
     private String password;
 
     @Column(nullable = false)
+    private String bitcoinWallet;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 

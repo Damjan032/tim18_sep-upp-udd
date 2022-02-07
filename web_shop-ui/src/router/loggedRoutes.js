@@ -1,6 +1,7 @@
 import Home from "@/pages/Home";
-import {basketPath, homePath} from "@/utils/paths";
+import {basketPath, homePath, successPath} from "@/utils/paths";
 import Basket from "@/pages/Basket";
+import SuccessPage from "@/pages/SuccessPage";
 
 const loggedRoutes = [
     {
@@ -10,6 +11,10 @@ const loggedRoutes = [
     {
         path: basketPath,
         component: Basket,
+    },
+    {
+        path: successPath,
+        component: SuccessPage
     }
 ];
 
