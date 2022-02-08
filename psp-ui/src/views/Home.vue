@@ -72,8 +72,11 @@ export default {
     },
     bitcoinMethod(){
       axios
-          .post(`${gateway}/${api_bitcoin_payment_method}/${this.invoiceId}`,
-            "KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs"
+          .post(`${gateway}/${api_bitcoin_payment_method}`,
+              {
+                    token:"KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs",
+                  invoiceId: this.invoiceId
+              }
           )
           .then((response) => {
             console.log(response.data);

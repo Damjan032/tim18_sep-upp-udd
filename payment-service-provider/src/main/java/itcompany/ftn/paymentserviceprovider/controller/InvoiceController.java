@@ -8,6 +8,8 @@ import itcompany.ftn.paymentserviceprovider.service.InvoiceService;
 import itcompany.ftn.paymentserviceprovider.service.TransactionService;
 import itcompany.ftn.paymentserviceprovider.service.WebShopService;
 import itcompany.ftn.paymentserviceprovider.util.EntityMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -22,6 +24,7 @@ import javax.validation.Valid;
 @RequestMapping(value = "api/payment-service-provider/invoice")
 public class InvoiceController {
 
+    private static final Logger logger = LoggerFactory.getLogger(InvoiceController.class);
     @Autowired
     WebShopService webShopService;
 
@@ -33,6 +36,7 @@ public class InvoiceController {
 
     @PostMapping
     public ResponseEntity createInvoice(@Valid @RequestBody InvoiceDTO dto) {
+        logger.info("Create invoice action");
         Invoice invoice = invoiceService.createInvoice(dto);
         if (invoice == null)
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -43,6 +47,7 @@ public class InvoiceController {
 
     @GetMapping(path = "/{invoiceId}")
     public ResponseEntity<InvoiceDTO> getInvoice(@PathVariable String invoiceId) {
+        logger.info("Get invoice action");
         Invoice invoice = invoiceService.getById(invoiceId);
         if (invoice == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -52,6 +57,8 @@ public class InvoiceController {
 
     @PostMapping("/pp-btc-transaction")
     public ResponseEntity<String> saveTransactionPspBtc(@RequestBody PaypalBtcTransactionDTO paypalBtcTransactionDTO){
+        logger.info(paypalBtcTransactionDTO.getStatus() +" "+ paypalBtcTransactionDTO.getType() +" payment transaction");
+
         Invoice invoice = invoiceService.getById(paypalBtcTransactionDTO.getInvoiceId());
         WebShop webShop = webShopService.getById("4028808c7dac61d3017dac9517690001");
         transactionService.addBtcOrPPTransaction(invoice, webShop, paypalBtcTransactionDTO);

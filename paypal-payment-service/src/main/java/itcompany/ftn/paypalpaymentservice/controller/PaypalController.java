@@ -2,6 +2,8 @@ package itcompany.ftn.paypalpaymentservice.controller;
 
 import itcompany.ftn.paypalpaymentservice.DTO.OrderDTO;
 import itcompany.ftn.paypalpaymentservice.service.PaypalService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,10 @@ import com.paypal.base.rest.PayPalRESTException;
 @RequestMapping(value = "api/paypal-payment-service/v1/test")
 public class PaypalController {
 
+
+    private static final Logger logger = LoggerFactory.getLogger(PaypalController.class);
+
+
     @Autowired
     PaypalService service;
 
@@ -24,19 +30,12 @@ public class PaypalController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> test(){
-        System.out.println("EVE ME ODJE");
-        return new ResponseEntity<>("Response from card-payment-service", HttpStatus.OK);
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> test(@RequestBody String pera){
-        System.out.println(pera);
-        System.out.println("EVE");
         return new ResponseEntity<>("Response from card-payment-service", HttpStatus.OK);
     }
 
     @PostMapping("/pay")
     public ResponseEntity<String> payment(@RequestBody OrderDTO order) {
+        logger.info("Paypal payment requested for " + order.getInvoiceId() + "invoice");
         try {
             Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
                     order.getIntent(), order.getDescription(), "http://localhost:4200/fail?status=FAILED&invoceId=" + order.getInvoiceId() + "&type=PAYPAL&",

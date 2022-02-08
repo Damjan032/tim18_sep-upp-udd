@@ -1,0 +1,950 @@
+2022-02-08 10:08:18 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 8236 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:08:18 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:08:19 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:08:19 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:08:19 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:08:19 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:08:19 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:08:19 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:08:19 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:08:19 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:08:19 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1152 ms
+2022-02-08 10:08:20 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:08:20 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:08:20 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:08:20 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:08:20 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:08:20 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:08:20 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:08:20 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:08:20 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:08:20 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:08:20 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:08:21 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:08:21 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:08:21 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:08:21 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:08:21 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:08:21 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311301903 with initial instances count: 4
+2022-02-08 10:08:21 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311301907, current=UP, previous=STARTING]
+2022-02-08 10:08:21 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:08:21 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1125884561: registering service...
+2022-02-08 10:08:21 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:08:21 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:08:21 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1125884561 - registration status: 204
+2022-02-08 10:08:21 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 3.68 seconds (JVM running for 4.369)
+2022-02-08 10:08:22 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:08:22 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:08:22 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-02-08 10:08:32 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:13:21 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:13:22 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:13:22 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311602732, current=DOWN, previous=UP]
+2022-02-08 10:13:22 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311602733, current=UP, previous=DOWN]
+2022-02-08 10:13:22 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1125884561: registering service...
+2022-02-08 10:13:22 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1125884561 - registration status: 204
+2022-02-08 10:13:22 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:13:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:13:22 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:13:22 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:13:25 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:13:25 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1125884561 - deregister  status: 200
+2022-02-08 10:13:25 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:13:30 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 7064 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:13:30 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:13:31 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:13:31 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:13:31 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:13:32 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:13:32 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:13:32 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:13:32 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:13:32 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:13:32 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1211 ms
+2022-02-08 10:13:32 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:13:32 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:13:32 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:13:32 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:13:32 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:13:32 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:13:33 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:13:33 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:13:33 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:13:33 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:13:33 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:13:35 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:13:35 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:13:35 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:13:35 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:13:35 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:13:35 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:13:36 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311616098 with initial instances count: 3
+2022-02-08 10:13:36 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311616101, current=UP, previous=STARTING]
+2022-02-08 10:13:36 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:13:36 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597: registering service...
+2022-02-08 10:13:36 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:13:36 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:13:36 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597 - registration status: 204
+2022-02-08 10:13:36 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 5.628 seconds (JVM running for 6.296)
+2022-02-08 10:13:36 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:13:36 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:13:36 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-02-08 10:13:45 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:13:45 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311625960, current=DOWN, previous=UP]
+2022-02-08 10:13:45 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:13:45 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:13:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:13:45 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:13:45 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:13:46 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597 - Re-registering apps/BITCOIN-PAYMENT-SERVICE2
+2022-02-08 10:13:46 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597: registering service...
+2022-02-08 10:13:46 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597 - registration status: 204
+2022-02-08 10:13:48 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:13:48 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-2028192597 - deregister  status: 200
+2022-02-08 10:13:49 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:13:53 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 108 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:13:53 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:13:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:13:53 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:13:53 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:13:54 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:13:54 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:13:54 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:13:54 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:13:54 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:13:54 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1104 ms
+2022-02-08 10:13:54 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:13:54 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:13:54 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:13:54 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:13:54 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:13:54 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:13:54 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:13:54 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:13:54 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:13:54 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:13:54 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:13:55 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:13:55 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:13:55 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:13:55 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:13:55 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:13:55 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:13:56 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311636218 with initial instances count: 3
+2022-02-08 10:13:56 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311636222, current=UP, previous=STARTING]
+2022-02-08 10:13:56 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:13:56 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1905199516: registering service...
+2022-02-08 10:13:56 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:13:56 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:13:56 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1905199516 - registration status: 204
+2022-02-08 10:13:56 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 3.674 seconds (JVM running for 4.242)
+2022-02-08 10:13:56 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:13:56 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:13:56 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-02-08 10:14:24 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:14:34 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:15:07 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:15:07 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311707481, current=DOWN, previous=UP]
+2022-02-08 10:15:07 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311707482, current=UP, previous=DOWN]
+2022-02-08 10:15:07 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1905199516: registering service...
+2022-02-08 10:15:07 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1905199516 - registration status: 204
+2022-02-08 10:15:07 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:15:07 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:15:07 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:15:07 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:15:10 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:15:10 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1905199516 - deregister  status: 200
+2022-02-08 10:15:10 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:15:14 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 18316 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:15:14 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:15:15 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:15:15 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:15:15 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:15:15 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:15:15 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:15:15 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:15:15 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:15:15 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:15:15 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1523 ms
+2022-02-08 10:15:16 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:15:16 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:15:16 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:15:16 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:15:16 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:15:16 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:15:16 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:15:16 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:15:16 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:15:16 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:15:16 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:15:17 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:15:17 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:15:17 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:15:17 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:15:17 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:15:17 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311717871 with initial instances count: 4
+2022-02-08 10:15:17 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311717875, current=UP, previous=STARTING]
+2022-02-08 10:15:17 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:15:17 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1766420912: registering service...
+2022-02-08 10:15:17 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:15:17 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:15:17 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1766420912 - registration status: 204
+2022-02-08 10:15:17 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 4.5 seconds (JVM running for 5.385)
+2022-02-08 10:15:18 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:15:18 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:15:18 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-02-08 10:15:32 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:47 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:47 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:47 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:47 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:47 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:48 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:48 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:48 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:48 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:48 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:49 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:50 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:50 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:50 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:50 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:50 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:16:51 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:15 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:17:15 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311835492, current=DOWN, previous=UP]
+2022-02-08 10:17:15 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311835494, current=UP, previous=DOWN]
+2022-02-08 10:17:15 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1766420912: registering service...
+2022-02-08 10:17:15 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1766420912 - registration status: 204
+2022-02-08 10:17:15 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:17:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:17:15 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:17:15 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:17:18 WARN  c.n.discovery.TimedSupervisorTask - task supervisor shutting down, can't accept the task
+2022-02-08 10:17:18 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:17:18 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:1766420912 - deregister  status: 200
+2022-02-08 10:17:18 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:17:21 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 18428 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:17:21 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:17:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:17:22 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:17:22 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:17:22 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:17:22 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:17:22 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:17:22 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:17:22 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:17:22 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1150 ms
+2022-02-08 10:17:23 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:17:23 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:17:23 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:17:23 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:17:23 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:17:23 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:17:23 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:17:23 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:17:23 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:17:23 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:17:23 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:17:24 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:17:24 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:17:24 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:17:24 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:17:24 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:17:24 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311844756 with initial instances count: 4
+2022-02-08 10:17:24 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311844761, current=UP, previous=STARTING]
+2022-02-08 10:17:24 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:17:24 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-583037316: registering service...
+2022-02-08 10:17:24 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:17:24 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:17:24 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-583037316 - registration status: 204
+2022-02-08 10:17:24 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 3.629 seconds (JVM running for 4.137)
+2022-02-08 10:17:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:17:25 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:17:25 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-02-08 10:17:27 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:29 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:29 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:29 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:31 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:32 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:34 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:35 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:36 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:17:36 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:18:47 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:18:47 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311927034, current=DOWN, previous=UP]
+2022-02-08 10:18:47 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311927035, current=UP, previous=DOWN]
+2022-02-08 10:18:47 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-583037316: registering service...
+2022-02-08 10:18:47 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-583037316 - registration status: 204
+2022-02-08 10:18:47 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:18:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:18:47 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:18:47 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:18:50 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:18:50 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-583037316 - deregister  status: 200
+2022-02-08 10:18:50 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:18:54 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 9168 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:18:54 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:18:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:18:54 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 4 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:18:55 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:18:55 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:18:55 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:18:55 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:18:55 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:18:55 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:18:55 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1082 ms
+2022-02-08 10:18:55 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:18:55 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:18:55 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:18:55 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:18:55 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:18:55 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:18:56 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:18:56 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:18:56 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:18:56 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:18:56 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:18:57 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:18:57 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:18:57 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:18:57 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:18:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:18:57 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644311937509 with initial instances count: 4
+2022-02-08 10:18:57 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644311937513, current=UP, previous=STARTING]
+2022-02-08 10:18:57 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:18:57 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:215279562: registering service...
+2022-02-08 10:18:57 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:18:57 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:18:57 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:215279562 - registration status: 204
+2022-02-08 10:18:57 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 3.639 seconds (JVM running for 4.179)
+2022-02-08 10:18:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:18:57 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:18:57 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-02-08 10:18:57 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:20:17 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:23:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:28:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:29:05 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:33:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:38:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:43:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:48:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:52:58 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:53:57 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:54:09 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 10:54:09 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644314049451, current=DOWN, previous=UP]
+2022-02-08 10:54:09 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644314049453, current=UP, previous=DOWN]
+2022-02-08 10:54:09 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:215279562: registering service...
+2022-02-08 10:54:09 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:215279562 - registration status: 204
+2022-02-08 10:54:09 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:54:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 10:54:09 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 10:54:09 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 10:54:12 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 10:54:12 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:215279562 - deregister  status: 200
+2022-02-08 10:54:12 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 10:54:17 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 12516 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 10:54:17 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 10:54:17 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 10:54:17 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2022-02-08 10:54:18 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 10:54:18 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 10:54:18 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:54:18 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 10:54:18 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 10:54:18 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 10:54:18 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1082 ms
+2022-02-08 10:54:18 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 10:54:18 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 10:54:18 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 10:54:18 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 10:54:18 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 10:54:18 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 10:54:19 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 10:54:19 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 10:54:19 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 10:54:19 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 10:54:19 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 10:54:20 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 10:54:20 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 10:54:20 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 10:54:20 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 10:54:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 10:54:20 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644314060448 with initial instances count: 4
+2022-02-08 10:54:20 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644314060451, current=UP, previous=STARTING]
+2022-02-08 10:54:20 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 10:54:20 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-1040958721: registering service...
+2022-02-08 10:54:20 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 10:54:20 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 10:54:20 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-1040958721 - registration status: 204
+2022-02-08 10:54:20 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 3.592 seconds (JVM running for 4.139)
+2022-02-08 10:54:20 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 10:54:20 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 10:54:20 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-02-08 10:54:34 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 10:59:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:04:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:09:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:14:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:19:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:24:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:29:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:34:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:39:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:44:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:49:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:54:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 11:59:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:04:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:09:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:14:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:19:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:24:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:29:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:34:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:39:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:44:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:49:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:54:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 12:59:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:04:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:09:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:14:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:19:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:24:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:29:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:34:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:39:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:44:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:49:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:54:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 13:59:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:04:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:09:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:14:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:19:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:24:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:29:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:34:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:39:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:44:20 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:45:16 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application BITCOIN-PAYMENT-SERVICE2 with eureka with status DOWN
+2022-02-08 14:45:16 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644327916730, current=DOWN, previous=UP]
+2022-02-08 14:45:16 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644327916732, current=UP, previous=DOWN]
+2022-02-08 14:45:16 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-1040958721: registering service...
+2022-02-08 14:45:16 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-1040958721 - registration status: 204
+2022-02-08 14:45:16 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 14:45:16 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2022-02-08 14:45:16 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2022-02-08 14:45:16 INFO  c.netflix.discovery.DiscoveryClient - Shutting down DiscoveryClient ...
+2022-02-08 14:45:19 INFO  c.netflix.discovery.DiscoveryClient - Unregistering ...
+2022-02-08 14:45:19 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-1040958721 - deregister  status: 200
+2022-02-08 14:45:20 INFO  c.netflix.discovery.DiscoveryClient - Completed shut down of DiscoveryClient
+2022-02-08 14:45:28 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Starting BitcoinPaymentServiceApplication2 using Java 17.0.1 on Damjan with PID 6012 (C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2\target\classes started by damja in C:\Users\damja\Desktop\tim18_sep-upp-udd\bitcoin-payment-service2)
+2022-02-08 14:45:28 INFO  i.f.b.BitcoinPaymentServiceApplication2 - No active profile set, falling back to default profiles: default
+2022-02-08 14:45:29 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-02-08 14:45:29 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2022-02-08 14:45:30 INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=e1aff3ab-5104-3ffa-8e4d-cacabe6b0bba
+2022-02-08 14:45:30 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8099 (http)
+2022-02-08 14:45:30 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8099"]
+2022-02-08 14:45:30 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2022-02-08 14:45:30 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.55]
+2022-02-08 14:45:30 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-02-08 14:45:30 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1545 ms
+2022-02-08 14:45:30 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-02-08 14:45:30 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.1.Final
+2022-02-08 14:45:31 INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-02-08 14:45:31 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2022-02-08 14:45:31 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2022-02-08 14:45:31 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-02-08 14:45:31 INFO  o.h.t.s.internal.SchemaCreatorImpl - HHH000476: Executing import script 'file:/C:/Users/damja/Desktop/tim18_sep-upp-udd/bitcoin-payment-service2/target/classes/import.sql'
+2022-02-08 14:45:31 WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "INSERT INTO `bank_account` VALUES ('4028808c7dac61d3017dac9517690001','http://localhost:8001/api/invoice','merchantId 1','123456')" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:440)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applyImportSources(SchemaCreatorImpl.java:496)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:181)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:136)
+	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:122)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:164)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:81)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:327)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:471)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1498)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290)
+	at itcompany.ftn.bitcoinpaymentservice.BitcoinPaymentServiceApplication2.main(BitcoinPaymentServiceApplication2.java:12)
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '4028808c7dac61d3017dac9517690001' for key 'bank_account.PRIMARY'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:768)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:653)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54)
+	... 33 common frames omitted
+2022-02-08 14:45:31 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-02-08 14:45:31 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-02-08 14:45:31 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-02-08 14:45:33 INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+2022-02-08 14:45:33 WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2022-02-08 14:45:33 INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-02-08 14:45:33 INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+2022-02-08 14:45:33 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 1
+2022-02-08 14:45:33 INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1644327933752 with initial instances count: 4
+2022-02-08 14:45:33 INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application BITCOIN-PAYMENT-SERVICE2 with eureka with status UP
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1644327933757, current=UP, previous=STARTING]
+2022-02-08 14:45:33 WARN  c.n.discovery.InstanceInfoReplicator - Ignoring onDemand update due to rate limiter
+2022-02-08 14:45:33 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8099"]
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-11607234: registering service...
+2022-02-08 14:45:33 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8099 (http) with context path ''
+2022-02-08 14:45:33 INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8099
+2022-02-08 14:45:33 INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_BITCOIN-PAYMENT-SERVICE2/bitcoin-payment-service2:-11607234 - registration status: 204
+2022-02-08 14:45:33 INFO  i.f.b.BitcoinPaymentServiceApplication2 - Started BitcoinPaymentServiceApplication2 in 5.564 seconds (JVM running for 6.631)
+2022-02-08 14:45:34 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-02-08 14:45:34 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-02-08 14:45:34 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2022-02-08 14:46:54 INFO  i.f.b.service.PaymentService - Bitcoin payment requested
+2022-02-08 14:46:54 INFO  i.f.b.service.PaymentService - Payment requested for payment with id 402881827ed8bd7f017ed996486f000b
+2022-02-08 14:50:33 INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration

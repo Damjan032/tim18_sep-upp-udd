@@ -2,8 +2,11 @@ package itcompany.ftn.paymentserviceprovider.controller;
 
 import itcompany.ftn.paymentserviceprovider.dto.BankCardPaymentInfoDTO;
 import itcompany.ftn.paymentserviceprovider.dto.BitcoinPaymentDTO;
+import itcompany.ftn.paymentserviceprovider.dto.BtcTokenDTO;
 import itcompany.ftn.paymentserviceprovider.model.Invoice;
 import itcompany.ftn.paymentserviceprovider.service.InvoiceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -21,6 +24,9 @@ import java.sql.Timestamp;
 @RestController
 @RequestMapping(value = "api/payment-service-provider/bitcoin-payment")
 public class BitcoinController {
+
+
+    private static final Logger logger = LoggerFactory.getLogger(BitcoinController.class);
 
     @Autowired
     InvoiceService invoiceService;
@@ -48,23 +54,21 @@ public class BitcoinController {
 
 
 
-    @PostMapping(path = "{invoiceId}")
-    public ResponseEntity<String> payInvoiceViaBitcoin(@PathVariable String invoiceId, @RequestBody String token) {
-        System.out.println("USAO OVDE2");
-        System.out.println(token);
-        Invoice invoice = invoiceService.getById(invoiceId);
+    @PostMapping()
+    public ResponseEntity<String> payInvoiceViaBitcoin(@RequestBody BtcTokenDTO btcToken) {
+        logger.info("Started bitcoin payment transaction");
+        Invoice invoice = invoiceService.getById(btcToken.getInvoiceId());
         if (invoice == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        System.out.println(invoice);
 
         BitcoinPaymentDTO bitcoinPaymentDTO = BitcoinPaymentDTO.builder().amount(invoice.getAmount().doubleValue())
-                .merchantOrderId(invoiceId)
+                .merchantOrderId(btcToken.getInvoiceId())
                 .errorURL("http://localhost:4200/error?status=ERROR")
                 .successURL("http://localhost:4200/success?status=SUCCESS")
                 .failedURL("http://localhost:4200/fail?status=FAIL")
                 .merchantTimestamp(new Timestamp(System.currentTimeMillis()))
                 .amount(invoice.getAmount().doubleValue())
-                .token(token)
+                .token(btcToken.getToken())
                 .build();
 
         ResponseEntity<String> urlResponse = bitcoinInvoicePaymentRestTemplate.exchange(String.format("%s/api/bitcoin-payment-service2/test/pay",

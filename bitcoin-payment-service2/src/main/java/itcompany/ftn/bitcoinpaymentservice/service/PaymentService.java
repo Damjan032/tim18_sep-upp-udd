@@ -6,6 +6,8 @@ import itcompany.ftn.bitcoinpaymentservice.dto.BitcoinPaymentDTO;
 import itcompany.ftn.bitcoinpaymentservice.enums.TransactionStatus;
 import itcompany.ftn.bitcoinpaymentservice.exceptions.InvalidDataException;
 import lombok.SneakyThrows;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.scheduling.annotation.Async;
@@ -21,23 +23,20 @@ public class PaymentService {
 	@Value("${SANDBOX_URL}")
 	private String sandbox;
 
+	private static final Logger logger = LoggerFactory.getLogger(PaymentService.class);
 
 
-	public String pay(BitcoinPaymentDTO pd) {
-		String token = "KbbCDeaF24FgwzyPnm_w8KLj-U7ya-RxKRR8woPs";
-		/*String token = pd.getAttributes().stream()
-				.filter(attribute -> attribute.getName().equalsIgnoreCase("merchant token")).findFirst().get()
-				.getValue();*/
- 		System.out.println(callback);
-		 System.out.println(sandbox);
+	public String pay(BitcoinPaymentDTO bitcoinPaymentDTO) {
+		logger.info("Payment requested for payment with id " + bitcoinPaymentDTO.getMerchantOrderId());
 		BitcoinOrderRequestDTO bitcoinOrder = BitcoinOrderRequestDTO.builder()
-				.order_id(pd.getMerchantOrderId().toString()).price_amount(pd.getAmount()).price_currency("USD")
+				.order_id(bitcoinPaymentDTO.getMerchantOrderId().toString()).price_amount(bitcoinPaymentDTO.getAmount()).price_currency("USD")
 				.receive_currency("BTC").title("").description("").callback_url(callback)
-				.cancel_url(pd.getFailedURL()+ "&invoceId=" + pd.getMerchantOrderId() + "&type=BITCOIN&")
-				.success_url(pd.getSuccessURL()+ "&invoceId=" + pd.getMerchantOrderId() + "&type=BITCOIN&").token(token).purchaser_email("")
+				.cancel_url(bitcoinPaymentDTO.getFailedURL()+ "&invoceId=" + bitcoinPaymentDTO.getMerchantOrderId() + "&type=BITCOIN&")
+				.success_url(bitcoinPaymentDTO.getSuccessURL()+ "&invoceId=" + bitcoinPaymentDTO.getMerchantOrderId() + "&type=BITCOIN&").purchaser_email("").
+				token(bitcoinPaymentDTO.getToken())
 				.build();
 
-		String clientSecret = "Bearer " + token;
+		String clientSecret = "Bearer " + bitcoinOrder.getToken();
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", clientSecret);
 
@@ -47,37 +46,23 @@ public class PaymentService {
 			response = new RestTemplate().exchange(sandbox, HttpMethod.POST, new HttpEntity<>(bitcoinOrder, headers),
 					BitcoinOrderResponseDTO.class);
 		} catch (Exception e) {
-			//logger.info("Create order CoinGate failed for payment with id " + pd.getMerchantOrderId());
+			logger.error("Create order CoinGate failed for payment with id " + bitcoinPaymentDTO.getMerchantOrderId());
 			throw new InvalidDataException("Create order CoinGate failed", HttpStatus.BAD_REQUEST);
 		}
 
 		if (response.getBody() == null) {
+			logger.error("Bitcoin service is not available");
 			throw new InvalidDataException("Bitcoin service is not available", HttpStatus.BAD_GATEWAY);
 		}
 
 		String paymentUrl = response.getBody().getPayment_url();
 
 		if (paymentUrl == null || paymentUrl.equals("")) {
-			throw new InvalidDataException("Missing payment url from coingate", HttpStatus.INTERNAL_SERVER_ERROR);
+			logger.error("Missing payment url from CoinGate");
+			throw new InvalidDataException("Missing payment url from CoinGate", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		return paymentUrl;
-	}
-
-
-	@Async
-	@SneakyThrows
-	public void sendTransactionResponse(Long transactionId, TransactionStatus status) {
-		int statusInt = 0;
-		if (status.equals(TransactionStatus.SUCCESS))
-			statusInt = 1;
-		if (status.equals(TransactionStatus.FAILED))
-			statusInt = 2;
-		if (status.equals(TransactionStatus.ERROR))
-			statusInt = 3;
-		HttpHeaders headers = new HttpHeaders();
-		new RestTemplate().exchange("https://localhost:8089/api/transaction/" + transactionId + "?status=" + statusInt,
-				HttpMethod.PUT, new HttpEntity<>(headers), Object.class);
 	}
 
 }

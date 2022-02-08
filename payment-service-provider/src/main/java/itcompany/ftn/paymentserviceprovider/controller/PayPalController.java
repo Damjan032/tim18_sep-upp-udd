@@ -4,6 +4,8 @@ import itcompany.ftn.paymentserviceprovider.dto.BitcoinPaymentDTO;
 import itcompany.ftn.paymentserviceprovider.dto.PayPalOrderDTO;
 import itcompany.ftn.paymentserviceprovider.model.Invoice;
 import itcompany.ftn.paymentserviceprovider.service.InvoiceService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,6 +21,8 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping(value = "api/payment-service-provider/paypal-payment")
 public class PayPalController {
+
+    private static final Logger logger = LoggerFactory.getLogger(PayPalController.class);
     @Autowired
     InvoiceService invoiceService;
 
@@ -46,9 +50,8 @@ public class PayPalController {
 
 
     @PostMapping(path = "{invoiceId}")
-    public ResponseEntity<String> payInvoiceViaBitcoin(@PathVariable String invoiceId, @RequestBody String token) {
-        System.out.println("USAO OVDE2");
-        System.out.println(token);
+    public ResponseEntity<String> payInvoiceViaPAypal(@PathVariable String invoiceId, @RequestBody String token) {
+        logger.info("Started paypal payment transaction for " + invoiceId + " invoice");
         Invoice invoice = invoiceService.getById(invoiceId);
         if (invoice == null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

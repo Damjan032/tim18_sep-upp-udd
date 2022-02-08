@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.paypal.base.rest.OAuthTokenCredential;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class PaypalService {
 
     private final APIContext apiContext = this.apiContext();
 
+    private static final Logger logger = LoggerFactory.getLogger(PaypalService.class);
+
     public PaypalService() throws PayPalRESTException {
     }
 
@@ -39,6 +43,7 @@ public class PaypalService {
             String description,
             String cancelUrl,
             String successUrl) throws PayPalRESTException{
+        logger.info("Create paypal payment");
         Amount amount = new Amount();
         amount.setCurrency(currency);
         total = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP).doubleValue();
@@ -67,6 +72,7 @@ public class PaypalService {
     }
 
     public Payment executePayment(String paymentId, String payerId) throws PayPalRESTException{
+        logger.info("Execute paypal payment");
         Payment payment = new Payment();
         payment.setId(paymentId);
         PaymentExecution paymentExecute = new PaymentExecution();
