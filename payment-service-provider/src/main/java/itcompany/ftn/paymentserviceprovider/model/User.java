@@ -1,11 +1,13 @@
 package itcompany.ftn.paymentserviceprovider.model;
 
 import itcompany.ftn.paymentserviceprovider.model.enums.Role;
+import lombok.AllArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -19,7 +21,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column()
     private String bitcoinWallet;
 
     @Column(nullable = false)
@@ -33,6 +35,12 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "web_shop_id", referencedColumnName = "id")
     private WebShop managedWebShop;
+
+    @Column()
+    private String payPalClientID;
+
+    @Column()
+    private String payPalSicID;
 
     public User() {}
 
@@ -101,4 +109,7 @@ public class User {
     public void setManagedWebShop(WebShop managedWebShop) {
         this.managedWebShop = managedWebShop;
     }
+
+    public String getPayPalClientID(){return payPalClientID;}
+    public String getPayPalSicID(){return payPalSicID;}
 }
